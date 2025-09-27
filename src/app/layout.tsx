@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import 'remixicon/fonts/remixicon.css';
 // import ThemeProvider from "../components/ThemeProvider";
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import theme from '../theme';

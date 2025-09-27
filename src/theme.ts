@@ -124,6 +124,12 @@ const theme = createTheme({
       lineHeight: 1.14,
       letterSpacing: 0,
     },
+    h6: {
+      fontWeight: 600,
+      fontSize: '20px',     
+      lineHeight: 1.14,
+      letterSpacing: 0,
+    },
     // Subtitle 1 — Mixed 64px / 99% / 0  (usei 500 de peso)
     subtitle1: {
       fontWeight: 500,
@@ -137,6 +143,15 @@ const theme = createTheme({
       fontSize: '1.125rem',    // 18px
       lineHeight: 1.14,
       letterSpacing: 0,
+    },
+
+    // body
+    body2: {
+      fontWeight: 400,
+      fontSize: '16px',    // 18px
+      lineHeight: 1.14,
+      letterSpacing: 0,
+      color: '#5D606E'
     },
     // Button — Medium 48px / 114% / 0
     button: {
@@ -163,6 +178,13 @@ const theme = createTheme({
      MuiTypography: {
     styleOverrides: {
       h1: {        
+        background: 'linear-gradient(92.99deg, #181A22 2.48%, #324592 103.8%)',
+        backgroundClip: 'text',
+        WebkitBackgroundClip: 'text',
+        color: 'transparent',
+        WebkitTextFillColor: 'transparent',
+      },
+      h6: {        
         background: 'linear-gradient(92.99deg, #181A22 2.48%, #324592 103.8%)',
         backgroundClip: 'text',
         WebkitBackgroundClip: 'text',

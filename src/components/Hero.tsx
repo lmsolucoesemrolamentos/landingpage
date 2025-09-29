@@ -51,8 +51,6 @@ const Hero = () => {
         width: '100%',
         px: 2,
         py: 2,
-        // bgcolor: 'rgba(0,0,0,0.5)',
-        // background: 'var(--bg-hero)',
         gap: 2,
       }}
     >
@@ -69,6 +67,7 @@ const Hero = () => {
           alt="LM logo"
           width={40}
           height={40}
+          style={{ borderRadius: 4 }}
         />
 
         {/* Componente de Search */}

@@ -5,14 +5,15 @@ import {
 import Navbar from './Navbar';
 import SectionIcon from './SectionIcon';
 import IndustryServiceCarousel from './IndustryServiceCarousel';
+import BearingShowSection from './BearingShowSection';
 
-export default function ServicesSection() {
+export default function BearingsSection() {
   return (
     <Box
-      id="servicos"
+      id="rolamentos-padroes"
       sx={{
         position: 'relative',
-        width: '100%',
+        width: '100%'
       }}
     >
 
@@ -20,18 +21,15 @@ export default function ServicesSection() {
       <Box
         sx={{
           width: '100%',
-          mb: { xs: 2, md: 4 }
         }}
       >
 
 
         {/* Header Section */}
         <Box sx={{ mb: { xs: 4, md: 6 }, px: { xs: 2, md: 4 }, }}>
-          <Box sx={{ width: '25%', height: '2px', background: 'linear-gradient(90deg, #FF8800 20%, transparent 100%)', mb: 2 }} >
-          </Box>
 
           <SectionIcon
-            icon="ri-chat-1-line"
+            icon="ri-settings-5-line"
           />
 
           <Box>
@@ -44,10 +42,10 @@ export default function ServicesSection() {
               }}
             >
               <Typography variant="h2" className="gradient-text">
-                SERVIÇOS
+                ROLAMENTOS
               </Typography>
               <Typography variant="h2" className="gradient-text">
-                SOB DEMANDA
+                PADRÕES
               </Typography>
             </Box>
 
@@ -57,7 +55,7 @@ export default function ServicesSection() {
               className="gradient-text"
               sx={{ display: { xs: 'none', md: 'block' }, lineHeight: 1.1 }}
             >
-              SERVIÇOS SOB DEMANDA
+              ROLAMENTOS PADRÕES
             </Typography>
           </Box>
 
@@ -66,12 +64,12 @@ export default function ServicesSection() {
             variant="subtitle1"
             sx={{ maxWidth: { xs: '100%', md: '50%' } }}
           >
-            Atendemos minusciosamente as necessidades da sua indústria!
+            Rolamentos padrões de <b>alta qualidade e eficiência,</b> dos distribuidores mais qualificados do mercado.
           </Typography>
         </Box>
 
-        {/* Service Cards */}
-        <IndustryServiceCarousel />
+        {/* Bearing show Cards */}
+        <BearingShowSection />
 
       </Box>
     </Box>

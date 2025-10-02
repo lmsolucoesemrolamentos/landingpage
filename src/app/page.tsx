@@ -3,6 +3,7 @@ import Image from "next/image";
 import Hero from "@/components/Hero";
 import ServicesSection from "@/components/ServicesSection";
 import Navbar from "@/components/Navbar";
+import BearingsSection from "@/components/BearingsSection";
 
 export default function Home() {
   return (
@@ -42,11 +43,18 @@ export default function Home() {
           }}>
             <Hero />
             <Navbar />
-            <ServicesSection />
-            <ServicesSection />
-            <ServicesSection />
-            <ServicesSection />
-            <ServicesSection />
+            <Box sx={{
+              width: '100%',
+              backgroundColor: 'rgba(255, 255, 255, 0.8)',
+              backdropFilter: 'blur(200px)',
+            }}>
+              <ServicesSection />
+              <BearingsSection />
+              <ServicesSection />
+              <ServicesSection />
+              <ServicesSection />
+              <ServicesSection />
+            </Box>
           </Box>
         </Box>
       </Container>

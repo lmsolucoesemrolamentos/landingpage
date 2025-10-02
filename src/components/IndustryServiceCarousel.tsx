@@ -54,16 +54,6 @@ const services = [
     href: "#solucoes-siderurgica",
   },
   {
-    id: "mineracao",
-    title: "DE MINERAÇÃO",
-    description: "Rolamentos criados para condições severas, garantindo",
-    highlights: "força, estabilidade e confiabilidade.",
-    details: "Resistência superior a poeira, choque e cargas pesadas.",
-    image: "/images/industry.png",
-    ctaText: "Explorar Soluções",
-    href: "#solucoes-mineracao",
-  },
-  {
     id: "alimenticia",
     title: "ALIMENTÍCIA",
     description: "Projetados para ambientes higiênicos, assegurando",
@@ -110,8 +100,7 @@ export default function IndustryServiceCarousel() {
   const getItemDimensions = useCallback(() => {
     const itemWidth = window.innerWidth < 600 ? 280 : 450
     const gap = window.innerWidth < 900 ? 16 : 32
-    const marginLeft = window.innerWidth < 900 ? 16 : 32
-    return { itemWidth, gap, marginLeft }
+    return { itemWidth, gap }
   }, [])
 
   // Função para encontrar o item mais próximo do início
@@ -120,11 +109,7 @@ export default function IndustryServiceCarousel() {
     const itemTotalWidth = itemWidth + gap
 
     // Calcula qual item está mais próximo do início
-    // const closestIndex = Math.round(scrollLeft / itemTotalWidth)
-    // return Math.max(0, Math.min(closestIndex, services.length - 1))
-    const { marginLeft } = getItemDimensions()
-    const normalized = Math.max(0, scrollLeft - marginLeft)
-    const closestIndex = Math.round(normalized / itemTotalWidth)
+    const closestIndex = Math.round(scrollLeft / itemTotalWidth)
     return Math.max(0, Math.min(closestIndex, services.length - 1))
   }, [getItemDimensions])
 
@@ -132,30 +117,32 @@ export default function IndustryServiceCarousel() {
   const scrollToItem = useCallback((index: number, smooth = true) => {
     if (!containerRef.current) return
 
-    const { itemWidth, gap, marginLeft } = getItemDimensions()
-    const step = itemWidth + gap
-    const target = marginLeft + index * step
+    const { itemWidth, gap } = getItemDimensions()
+    const itemTotalWidth = itemWidth + gap
+    const scrollPosition = index * itemTotalWidth
 
-    const el = containerRef.current!
-    const maxScroll = el.scrollWidth - el.clientWidth
-    const clamped = Math.max(0, Math.min(target, maxScroll))
-
-    el.scrollTo({ left: clamped, behavior: smooth ? 'smooth' : 'auto' })
-
+    containerRef.current.scrollTo({
+      left: scrollPosition,
+      behavior: smooth ? 'smooth' : 'auto'
+    })
   }, [getItemDimensions])
 
   // Handler para quando o scroll parar
   const handleScrollEnd = useCallback(() => {
     if (!containerRef.current || isUserScrollingRef.current) return
 
-    const scrollLeft = containerRef.current.scrollLeft
-    const closestIndex = findClosestItem(scrollLeft)
+    const currentScrollLeft = containerRef.current.scrollLeft
+    const closestIndex = findClosestItem(currentScrollLeft)
     const closestService = services[closestIndex]
 
-    // Atualiza o serviço ativo e faz scroll para o item mais próximo
-    setSelected(closestService.id)
+    // Só atualiza se mudou o item ativo
+    if (closestService.id !== selected) {
+      setSelected(closestService.id)
+    }
+
+    // Sempre faz scroll para garantir posicionamento correto
     scrollToItem(closestIndex, true)
-  }, [findClosestItem, scrollToItem])
+  }, [findClosestItem, scrollToItem, selected])
 
   // Handler para evento de scroll
   const handleScroll = useCallback(() => {
@@ -169,7 +156,7 @@ export default function IndustryServiceCarousel() {
     // Define novo timeout para detectar fim do scroll
     scrollTimeoutRef.current = setTimeout(() => {
       handleScrollEnd()
-    }, 150) // 150ms após parar de fazer scroll
+    }, 200) // 200ms para evitar múltiplas chamadas
   }, [handleScrollEnd])
 
   const handleServiceClick = (serviceId: string, index: number) => {
@@ -183,7 +170,7 @@ export default function IndustryServiceCarousel() {
     // Permite scroll automático novamente após a animação
     setTimeout(() => {
       isUserScrollingRef.current = false
-    }, 500)
+    }, 600) // 600ms para garantir que a animação termine
   }
 
   // Handlers para drag scroll
@@ -208,13 +195,23 @@ export default function IndustryServiceCarousel() {
   }
 
   const handleMouseUp = () => {
-    setIsDragging(false)
-    // handleScrollEnd()
+    if (isDragging) {
+      setIsDragging(false)
+      // Força a seleção do item mais próximo após soltar o drag
+      setTimeout(() => {
+        handleScrollEnd()
+      }, 50) // Delay menor para resposta mais rápida
+    }
   }
 
   const handleMouseLeave = () => {
-    setIsDragging(false)
-    // handleScrollEnd()
+    if (isDragging) {
+      setIsDragging(false)
+      // Força a seleção do item mais próximo após sair do container
+      setTimeout(() => {
+        handleScrollEnd()
+      }, 50) // Delay menor para resposta mais rápida
+    }
   }
 
   // Effect para adicionar/remover event listeners

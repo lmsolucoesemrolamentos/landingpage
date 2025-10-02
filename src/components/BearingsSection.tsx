@@ -10,7 +10,7 @@ import BearingShowSection from './BearingShowSection';
 export default function BearingsSection() {
   return (
     <Box
-      id="rolamentos-padroes"
+      id="rolamentos"
       sx={{
         position: 'relative',
         width: '100%'

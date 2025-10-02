@@ -9,10 +9,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const navItems = [
-  { label: 'Serviços', href: '#servicos' },
-  { label: 'Indústrias', href: '#industrias' },
-  { label: 'Sobre', href: '#sobre' },
-  { label: 'Contato', href: '#contato' },
+  { label: 'Sob demanda', href: '#sob-demanda' },
+  { label: 'Rolamentos', href: '#rolamentos' },
+  { label: 'Projetos', href: '#projetos-personalizados' },
+  { label: 'Manutenção', href: '#manutencao' },
+  { label: 'Quem somos', href: '#quem-somos' },
 ];
 
 export default function Navbar() {

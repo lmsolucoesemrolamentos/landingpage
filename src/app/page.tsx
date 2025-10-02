@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import BearingsSection from "@/components/BearingsSection";
 import NotFoundSection from "@/components/NotFoundSection";
 import PartnerBrandSection from "@/components/PartnerBrandSection";
+import CustomProjectSection from "@/components/CustomProjectSection";
 
 export default function Home() {
   return (
@@ -54,6 +55,7 @@ export default function Home() {
               <BearingsSection />
               <NotFoundSection />
               <PartnerBrandSection />
+              <CustomProjectSection />
 
               <ServicesSection />
               <ServicesSection />

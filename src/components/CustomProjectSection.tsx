@@ -18,9 +18,10 @@ const ctaButtonStyle = {
   background: 'radial-gradient(67.91% 128.31% at 54.59% 136.4%, #FF4D00 0%, #FF8800 100%)'
 }
 
-export default function NotFoundSection() {
+export default function CustomProjectSection() {
   return (
     <Box
+      id='projetos-personalizados'
       sx={{
         position: 'relative',
         width: '100%',
@@ -35,9 +36,9 @@ export default function NotFoundSection() {
       {/* Content */}
       <Box
         sx={{
-          minHeight: { xs: '200px', md: '360px' },
+          minHeight: { xs: '300px', md: '600px' },
           width: '100%',
-          maxWidth: { xs: '300px', md: '500px' },
+          maxWidth: { xs: '320px', md: '700px' },
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -46,16 +47,16 @@ export default function NotFoundSection() {
           gap: 1
         }}
       >
-        <Typography variant="h6" className="gradient-text">
-          Não encontrou o que procurava?
+        <Typography variant="h2" className="gradient-text">
+          PROJETOS PERSONALIZADOS
         </Typography>
-        <Typography variant="body1" color="text.secondary" sx={{ mb: 2, maxWidth: "fit-content" }}>
-          Fale com os nossos especialistas para uma busca mais precisa
+        <Typography variant="subtitle1" color="text.secondary" sx={{ mb: 2, maxWidth: "fit-content" }}>
+          Tenha uma equipe de engenheiros altamente qualificados para trabalhar no seu projeto.
         </Typography>
 
 
         <Button sx={{ ...ctaButtonStyle }}>
-          Falar Com Especialista
+          Solicitar Projeto Personalizado
         </Button>
 
 

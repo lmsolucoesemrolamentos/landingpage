@@ -2,6 +2,7 @@ import { Box, Container } from "@mui/material";
 import Image from "next/image";
 import Hero from "@/components/Hero";
 import ServicesSection from "@/components/ServicesSection";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
@@ -36,9 +37,15 @@ export default function Home() {
             alignItems: "center",
             flexDirection: "column",
             zIndex: 1,
-            gap: 2
+            // gap: 2
+            gap: 0
           }}>
             <Hero />
+            <Navbar />
+            <ServicesSection />
+            <ServicesSection />
+            <ServicesSection />
+            <ServicesSection />
             <ServicesSection />
           </Box>
         </Box>

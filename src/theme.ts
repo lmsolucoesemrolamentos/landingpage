@@ -108,7 +108,7 @@ const theme = createTheme({
       fontWeight: 600,
       fontSize: '32px', 
        '@media (min-width:600px)': {
-        fontSize: '42px',
+        fontSize: '64px',
       },         
       lineHeight: 1.14,
       letterSpacing: 0,
@@ -139,23 +139,31 @@ const theme = createTheme({
         },
     // Subtitle 1 — Mixed 64px / 99% / 0  (usei 500 de peso)
     subtitle1: {
-      fontWeight: 500,
-      fontSize: '1.25rem',     // 20px
-      lineHeight: 1.2,         
+        fontWeight: 400,
+      fontSize: '20px', 
+       '@media (min-width:600px)': {
+        fontSize: '42px',
+      },     
+      lineHeight: 1.14,
       letterSpacing: 0,
+      color: '#5D606E'
     },
     // Subtitle 2 — Mixed 48px / 114% / 0 (peso 500)
     subtitle2: {
-      fontWeight: 500,
-      fontSize: '1.125rem',    // 18px
+       fontWeight: 400,
+      fontSize: '16px', 
+       '@media (min-width:600px)': {
+        fontSize: '20px',
+      },     
       lineHeight: 1.14,
       letterSpacing: 0,
+      color: '#5D606E'
     },
 
     // body
     body1: {
       fontWeight: 400,
-      fontSize: '20px', 
+      fontSize: '16px', 
        '@media (min-width:600px)': {
         fontSize: '24px',
       },     

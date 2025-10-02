@@ -13,7 +13,7 @@ const ctaButtonStyle = {
 }
 
 interface BearingTag {
-  icon: React.ReactNode;
+  icon: string;
   title: string;
 }
 
@@ -56,10 +56,11 @@ const bearingData: BearingItem[] = [
 
 export default function BearingShowSection() {
   return (
-    <Box>
+    <Box sx={{ width: '100%' }}>
 
-      <Grid container spacing={4}>
+      <Grid container spacing={4} sx={{ borderRadius: 2, mx: { xs: 2, md: 4 } }}>
         <Grid size={{ xs: 12, md: 6 }}>
+
           <Image
             src={bearingData[0].imgSrc}
             alt={bearingData[0].title}
@@ -68,8 +69,8 @@ export default function BearingShowSection() {
             height={300}
           />
         </Grid>
-        <Grid size={{ xs: 12, md: 6 }}>
-          <Box sx={{ height: '100%', display: "flex", flexDirection: "column", justifyContent: 'space-between', alignItems: 'start', gap: 1 }}>
+        <Grid size={{ xs: 12, md: 6 }} sx={{ p: { xs: 2, md: 4 } }}>
+          <Box sx={{ height: '100%', display: "flex", flexDirection: "column", justifyContent: 'space-between', alignItems: 'start', gap: 2 }}>
             <Box>
               <Typography variant="h6" className='gradient-text'>
                 {bearingData[0].title.toUpperCase()}
@@ -78,44 +79,43 @@ export default function BearingShowSection() {
                 {bearingData[0].description}
               </Typography>
             </Box>
-            <Box>
-              <>
-                <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 2 }}>
-                  {bearingData[0].tags.map((tag, index) => (
-                    <>
-                      {index > 0 && (
+            <Box sx={{
+              // display: 'flex', flexDirection: 'column', gap: { xs: 2, md: 4 }
+            }}>
+              <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 2, mb: 2 }}>
+                {bearingData[0].tags.map((tag, index) => (
+                  <>
+                    {index > 0 && (
 
-                        <Divider orientation="vertical" flexItem sx={{ px: 0 }} />
-                      )}
-                      <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                        <Box
-                          component="i"
-                          className={tag.icon as string}
-                          sx={{
-                            fontSize: { xs: '20px', md: '28px' },
-                            color: 'primary.main'
-                          }}
-                        />
-                        {/* <i className={tag.icon as string} style={{ fontSize: { xs: '16px', md: '24px' }, color: 'rgba(0,0,0,0.4)' }}></i> */}
-                        <Typography variant="body1" color="text.secondary">
-                          {tag.title}
-                        </Typography>
+                      <Divider orientation="vertical" flexItem sx={{ px: 0 }} />
+                    )}
+                    <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Box
+                        component="i"
+                        className={tag.icon as string}
+                        sx={{
+                          fontSize: { xs: '20px', md: '28px' },
+                          color: 'primary.main'
+                        }}
+                      />
+                      {/* <i className={tag.icon as string} style={{ fontSize: { xs: '16px', md: '24px' }, color: 'rgba(0,0,0,0.4)' }}></i> */}
+                      <Typography variant="body1" color="text.secondary">
+                        {tag.title}
+                      </Typography>
 
-                      </Box>
-                    </>
-                  ))}
-                </Box>
-                <Button sx={{ ...ctaButtonStyle, my: 2 }}>
-                  Solicitar orçamento
-                </Button>
-              </>
+                    </Box>
+                  </>
+                ))}
+              </Box>
+              <Button sx={{ ...ctaButtonStyle }}>
+                Solicitar orçamento
+              </Button>
             </Box>
           </Box>
         </Grid>
       </Grid>
 
-      <BearingShowCard>
-      </BearingShowCard>
+      <BearingShowCard bearingData={bearingData} />
     </Box>
   );
 }

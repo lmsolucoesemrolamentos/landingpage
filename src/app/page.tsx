@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import ServicesSection from "@/components/ServicesSection";
 import Navbar from "@/components/Navbar";
 import BearingsSection from "@/components/BearingsSection";
+import NotFoundSection from "@/components/NotFoundSection";
 
 export default function Home() {
   return (
@@ -50,6 +51,7 @@ export default function Home() {
             }}>
               <ServicesSection />
               <BearingsSection />
+              <NotFoundSection />
               <ServicesSection />
               <ServicesSection />
               <ServicesSection />

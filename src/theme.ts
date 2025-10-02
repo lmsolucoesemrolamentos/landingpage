@@ -132,7 +132,7 @@ const theme = createTheme({
       fontWeight: 600,
       fontSize: '20px',
       '@media (min-width:600px)': {
-        fontSize: '30px',
+        fontSize: '32px',
       },     
       lineHeight: 1.14,
       letterSpacing: 0,

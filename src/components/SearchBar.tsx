@@ -28,7 +28,7 @@ export default function SearchBar() {
           left: expanded ? 0 : 'auto',
           right: expanded ? 0 : 'auto',
           zIndex: expanded ? t.zIndex.modal : 'auto',
-          width: expanded ? '100vw' : 230,
+          width: expanded ? '100vw' : '100%',
           maxWidth: expanded ? 'none' : 1200,
           backgroundColor: expanded ? 'rgba(255, 255, 255, 0.95)' : 'transparent',
           backdropFilter: expanded ? 'blur(10px)' : 'none',

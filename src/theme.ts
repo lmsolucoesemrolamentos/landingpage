@@ -120,16 +120,20 @@ const theme = createTheme({
     // H4 (usei pra “H4 Regular” da tua tabela) — 64px / 114% / 0
     h4: {
       fontWeight: 400,
-      fontSize: '1.5rem',      // 24px
+      // 24px
       lineHeight: 1.14,
       letterSpacing: 0,
+      fontSize: '20px',
     },
     h6: {
       fontWeight: 600,
-      fontSize: '20px',     
+      fontSize: '20px',
+      '@media (min-width:600px)': {
+        fontSize: '30px',
+      },     
       lineHeight: 1.14,
       letterSpacing: 0,
-    },
+        },
     // Subtitle 1 — Mixed 64px / 99% / 0  (usei 500 de peso)
     subtitle1: {
       fontWeight: 500,
@@ -148,7 +152,10 @@ const theme = createTheme({
     // body
     body2: {
       fontWeight: 400,
-      fontSize: '16px',    // 18px
+      fontSize: '16px', 
+       '@media (min-width:600px)': {
+        fontSize: '20px',
+      },     
       lineHeight: 1.14,
       letterSpacing: 0,
       color: '#5D606E'

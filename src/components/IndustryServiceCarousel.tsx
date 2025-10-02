@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect, useCallback } from "react"
 import { Box, Button, Typography } from "@mui/material"
 import Link from "next/link"
 
@@ -98,28 +98,161 @@ const services = [
 export default function IndustryServiceCarousel() {
   const [selected, setSelected] = useState<string>(services[0].id)
   const containerRef = useRef<HTMLElement>(null)
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const isUserScrollingRef = useRef(false)
+
+  // Estados para drag scroll
+  const [isDragging, setIsDragging] = useState(false)
+  const [startX, setStartX] = useState(0)
+  const [scrollLeft, setScrollLeft] = useState(0)
+
+  // Função para calcular dimensões baseadas no breakpoint
+  const getItemDimensions = useCallback(() => {
+    const itemWidth = window.innerWidth < 600 ? 280 : 450
+    const gap = window.innerWidth < 900 ? 16 : 32
+    const marginLeft = window.innerWidth < 900 ? 16 : 32
+    return { itemWidth, gap, marginLeft }
+  }, [])
+
+  // Função para encontrar o item mais próximo do início
+  const findClosestItem = useCallback((scrollLeft: number) => {
+    const { itemWidth, gap } = getItemDimensions()
+    const itemTotalWidth = itemWidth + gap
+
+    // Calcula qual item está mais próximo do início
+    // const closestIndex = Math.round(scrollLeft / itemTotalWidth)
+    // return Math.max(0, Math.min(closestIndex, services.length - 1))
+    const { marginLeft } = getItemDimensions()
+    const normalized = Math.max(0, scrollLeft - marginLeft)
+    const closestIndex = Math.round(normalized / itemTotalWidth)
+    return Math.max(0, Math.min(closestIndex, services.length - 1))
+  }, [getItemDimensions])
+
+  // Função para fazer scroll até um item específico
+  const scrollToItem = useCallback((index: number, smooth = true) => {
+    if (!containerRef.current) return
+
+    const { itemWidth, gap, marginLeft } = getItemDimensions()
+    const step = itemWidth + gap
+    const target = marginLeft + index * step
+
+    const el = containerRef.current!
+    const maxScroll = el.scrollWidth - el.clientWidth
+    const clamped = Math.max(0, Math.min(target, maxScroll))
+
+    el.scrollTo({ left: clamped, behavior: smooth ? 'smooth' : 'auto' })
+
+  }, [getItemDimensions])
+
+  // Handler para quando o scroll parar
+  const handleScrollEnd = useCallback(() => {
+    if (!containerRef.current || isUserScrollingRef.current) return
+
+    const scrollLeft = containerRef.current.scrollLeft
+    const closestIndex = findClosestItem(scrollLeft)
+    const closestService = services[closestIndex]
+
+    // Atualiza o serviço ativo e faz scroll para o item mais próximo
+    setSelected(closestService.id)
+    scrollToItem(closestIndex, true)
+  }, [findClosestItem, scrollToItem])
+
+  // Handler para evento de scroll
+  const handleScroll = useCallback(() => {
+    if (isUserScrollingRef.current) return
+
+    // Limpa timeout anterior
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current)
+    }
+
+    // Define novo timeout para detectar fim do scroll
+    scrollTimeoutRef.current = setTimeout(() => {
+      handleScrollEnd()
+    }, 150) // 150ms após parar de fazer scroll
+  }, [handleScrollEnd])
 
   const handleServiceClick = (serviceId: string, index: number) => {
+    // Só executa se não estiver fazendo drag
+    if (isDragging) return
+
+    isUserScrollingRef.current = true
     setSelected(serviceId)
+    scrollToItem(index, true)
 
-    // Scroll para o item selecionado
-    if (containerRef.current) {
-      const itemWidth = window.innerWidth < 600 ? 280 : 450 // minWidth dos items
-      const gap = window.innerWidth < 900 ? 16 : 32 // gap entre items
-      const marginLeft = window.innerWidth < 900 ? 16 : 32 // margin left do primeiro item
-
-      const scrollPosition = 0 + (index * (itemWidth + gap))
-
-      containerRef.current.scrollTo({
-        left: scrollPosition,
-        behavior: 'smooth'
-      })
-    }
+    // Permite scroll automático novamente após a animação
+    setTimeout(() => {
+      isUserScrollingRef.current = false
+    }, 500)
   }
+
+  // Handlers para drag scroll
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!containerRef.current) return
+
+    setIsDragging(true)
+    setStartX(e.pageX - containerRef.current.offsetLeft)
+    setScrollLeft(containerRef.current.scrollLeft)
+
+    // Previne seleção de texto durante o drag
+    e.preventDefault()
+  }
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !containerRef.current) return
+
+    e.preventDefault()
+    const x = e.pageX - containerRef.current.offsetLeft
+    const walk = (x - startX) * 2 // Multiplica por 2 para scroll mais rápido
+    containerRef.current.scrollLeft = scrollLeft - walk
+  }
+
+  const handleMouseUp = () => {
+    setIsDragging(false)
+    // handleScrollEnd()
+  }
+
+  const handleMouseLeave = () => {
+    setIsDragging(false)
+    // handleScrollEnd()
+  }
+
+  // Effect para adicionar/remover event listeners
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+
+    container.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => {
+      container.removeEventListener('scroll', handleScroll)
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current)
+      }
+    }
+  }, [handleScroll])
+
+  // Effect para lidar com resize da tela
+  useEffect(() => {
+    const handleResize = () => {
+      const currentIndex = services.findIndex(service => service.id === selected)
+      if (currentIndex !== -1) {
+        // Reposiciona sem animação após resize
+        setTimeout(() => scrollToItem(currentIndex, false), 100)
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [selected, scrollToItem])
 
   return (
     <Box
       ref={containerRef}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseLeave}
       sx={{
         display: "flex",
         flexDirection: "row",
@@ -129,7 +262,16 @@ export default function IndustryServiceCarousel() {
         width: "100%",
         overflowX: "auto",
         scrollSnapType: "x mandatory",
+        scrollPaddingInline: { xs: 16, md: 32 },
         scrollBehavior: "smooth",
+        cursor: isDragging ? "grabbing" : "grab",
+        userSelect: "none", // Previne seleção de texto durante o drag
+        // Remove scrollbar customizada para melhor UX
+        scrollbarWidth: "none", // Firefox
+        msOverflowStyle: "none", // IE
+        "&::-webkit-scrollbar": {
+          display: "none", // Chrome, Safari, Edge
+        },
       }}
     >
       {services.map((service, index) => {
@@ -146,7 +288,7 @@ export default function IndustryServiceCarousel() {
               overflow: "hidden",
               position: "relative",
               cursor: "pointer",
-              // scrollSnapAlign: "start",
+              scrollSnapAlign: "start", // Ativa snap scrolling
               backgroundImage: `url(${service.image})`,
               backgroundRepeat: "no-repeat",
               backgroundPosition: "0px -80px",

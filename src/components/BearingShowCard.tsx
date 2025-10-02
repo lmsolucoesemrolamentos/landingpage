@@ -234,7 +234,6 @@ export default function BearingShowCard({ bearingData }: BearingShowCardProps) {
                 {/* Título */}
                 <Typography
                   variant="h6"
-                  component="h3"
                   sx={{
                     fontWeight: 600,
                     mb: 1,

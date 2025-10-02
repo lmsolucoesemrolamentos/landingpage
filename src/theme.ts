@@ -116,7 +116,10 @@ const theme = createTheme({
     // H3 (usei pra “H4 Semi Bold” da tua tabela) — 64px / 114% / 0
     h3: {
       fontWeight: 600,
-      fontSize: '2rem',        // 32px
+      fontSize: '32px', 
+       '@media (min-width:600px)': {
+        fontSize: '48px',
+      },              // 32px
       lineHeight: 1.14,
       letterSpacing: 0,
     },

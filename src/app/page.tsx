@@ -8,6 +8,7 @@ import NotFoundSection from "@/components/NotFoundSection";
 import PartnerBrandSection from "@/components/PartnerBrandSection";
 import CustomProjectSection from "@/components/CustomProjectSection";
 import MaintenanceSection from "@/components/MaintenanceSection";
+import WhoWeAreSection from "@/components/WhoWeAreSection";
 
 export default function Home() {
   return (
@@ -58,6 +59,7 @@ export default function Home() {
               <PartnerBrandSection />
               <CustomProjectSection />
               <MaintenanceSection />
+              <WhoWeAreSection />
 
               <ServicesSection />
               <ServicesSection />

@@ -7,6 +7,7 @@ import BearingsSection from "@/components/BearingsSection";
 import NotFoundSection from "@/components/NotFoundSection";
 import PartnerBrandSection from "@/components/PartnerBrandSection";
 import CustomProjectSection from "@/components/CustomProjectSection";
+import MaintenanceSection from "@/components/MaintenanceSection";
 
 export default function Home() {
   return (
@@ -56,6 +57,7 @@ export default function Home() {
               <NotFoundSection />
               <PartnerBrandSection />
               <CustomProjectSection />
+              <MaintenanceSection />
 
               <ServicesSection />
               <ServicesSection />

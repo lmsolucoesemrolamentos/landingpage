@@ -106,7 +106,10 @@ const theme = createTheme({
     // H2 — Semi Bold 160px / 114% / 0
     h2: {
       fontWeight: 600,
-      fontSize: '3rem',        // 48px
+      fontSize: '32px', 
+       '@media (min-width:600px)': {
+        fontSize: '42px',
+      },         
       lineHeight: 1.14,
       letterSpacing: 0,
     },
@@ -150,6 +153,16 @@ const theme = createTheme({
     },
 
     // body
+    body1: {
+      fontWeight: 400,
+      fontSize: '20px', 
+       '@media (min-width:600px)': {
+        fontSize: '24px',
+      },     
+      lineHeight: 1.14,
+      letterSpacing: 0,
+      color: '#5D606E'
+    },
     body2: {
       fontWeight: 400,
       fontSize: '16px', 

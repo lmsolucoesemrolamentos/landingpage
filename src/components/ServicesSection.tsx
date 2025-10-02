@@ -9,6 +9,7 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from './Navbar';
+import IconButton from './IconButton';
 
 const serviceCards = [
   {
@@ -36,92 +37,72 @@ const serviceCards = [
 export default function ServicesSection() {
   return (
     <Box
-      component="section"
       id="servicos"
       sx={{
+        bgcolor: 'transparent !important',
+        // bgcolor: 'blue !important',
         position: 'relative',
-        backgroundColor: 'rgba(255, 255, 255, 0.9)',
-        backdropFilter: 'blur(20px)',
-        borderTop: '1px solid',
-        borderColor: 'divider',
         boxShadow: '0 -4px 30px rgba(0, 0, 0, 0.1)',
         minHeight: '100vh',
+        minWidth: '100%',
       }}
     >
       {/* Navbar Sticky */}
       <Navbar />
 
       {/* Content */}
-      <Container
-        maxWidth="xl"
+      <Box
         sx={{
-          py: { xs: 4, md: 6 },
-          px: { xs: 2, md: 4 }
+          // py: { xs: 4, md: 6 },
+          // px: { xs: 2, md: 4 },
+          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          backdropFilter: 'blur(200px)',
         }}
       >
+
+
         {/* Header Section */}
-        <Box sx={{ mb: { xs: 4, md: 6 } }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
-            <Box
-              sx={{
-                width: 48,
-                height: 48,
-                backgroundColor: 'secondary.main',
-                borderRadius: 1,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <Typography
-                variant="h6"
-                sx={{
-                  color: 'common.white',
-                  fontWeight: 700,
-                  fontSize: '1.5rem',
-                }}
-              >
-                03
-              </Typography>
-            </Box>
+        <Box sx={{ mb: { xs: 4, md: 6 }, px: { xs: 2, md: 4 }, }}>
+          <Box sx={{ width: '25%', height: '2px', background: 'linear-gradient(90deg, #FF8800 20%, transparent 100%)', mb: 2 }} >
           </Box>
 
-          <Typography
-            variant="h2"
-            component="h1"
-            sx={{
-              fontSize: { xs: '2rem', md: '2.5rem', lg: '3rem' },
-              fontWeight: 700,
-              color: 'primary.main',
-              lineHeight: 1.2,
-              mb: 2,
-            }}
-          >
-            SERVIÇOS
-          </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+            <IconButton
+              icon="ri-chat-1-line"
+              href="#contato"
+            />
+          </Box>
 
-          <Typography
-            variant="h3"
-            component="h2"
-            sx={{
-              fontSize: { xs: '1.8rem', md: '2.2rem', lg: '2.8rem' },
-              fontWeight: 700,
-              color: 'primary.dark',
-              lineHeight: 1.2,
-              mb: 3,
-            }}
-          >
-            SOB DEMANDA
-          </Typography>
+          <Box>
+            {/* MOBILE: duas linhas */}
+            <Box
+              sx={{
+                display: { xs: 'flex', md: 'none' },
+                flexDirection: 'column',
+                lineHeight: 1.1,
+              }}
+            >
+              <Typography variant="h2" className="gradient-text">
+                SERVIÇOS
+              </Typography>
+              <Typography variant="h2" className="gradient-text">
+                SOB DEMANDA
+              </Typography>
+            </Box>
+
+            {/* DESKTOP: uma linha só */}
+            <Typography
+              variant="h2"
+              className="gradient-text"
+              sx={{ display: { xs: 'none', md: 'block' }, lineHeight: 1.1 }}
+            >
+              SERVIÇOS SOB DEMANDA
+            </Typography>
+          </Box>
+
 
           <Typography
             variant="body1"
-            sx={{
-              fontSize: { xs: '1rem', md: '1.125rem' },
-              color: 'text.secondary',
-              maxWidth: 600,
-              lineHeight: 1.6,
-            }}
           >
             Atendemos minusciosamente as necessidades da sua indústria!
           </Typography>
@@ -286,7 +267,7 @@ export default function ServicesSection() {
             </Box>
           ))}
         </Box>
-      </Container>
+      </Box>
     </Box>
   );
 }

@@ -2,7 +2,6 @@ import {
   AppBar,
   Box,
   Button,
-  Container,
   Toolbar,
   Typography,
 } from '@mui/material';
@@ -23,22 +22,25 @@ export default function Navbar() {
       position="sticky"
       elevation={0}
       sx={{
-        backgroundColor: 'rgba(255, 255, 255, 0.3)',
-        backdropFilter: 'blur(20px)',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        backdropFilter: 'blur(200px)',
         border: 'none'
       }}
     >
-      <Container maxWidth="xl" sx={{ px: 2, py: 1 }}>
+      <Box sx={{ px: { xs: 2, md: 4 }, py: 1, width: '100%' }}>
         <Toolbar
           sx={{
             justifyContent: 'space-between',
             // py: theme.spacing(1),
-            p: 0,
+            p: '0px !important',
             border: 'none'
           }}
         >
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: 1 }}>
-            <i className="ri-menu-5-fill" style={{ fontSize: '24px', color: 'text.secondary', opacity: 0.4 }}></i>
+            {/* Menu icon only on mobile */}
+            <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+              <i className="ri-menu-5-fill" style={{ fontSize: '24px', color: 'rgba(0,0,0,0.4)' }}></i>
+            </Box>
             {/* Logo */}
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <Link href="/" style={{ textDecoration: 'none' }}>
@@ -149,7 +151,7 @@ export default function Navbar() {
             </Button>
           </Box>
         </Toolbar>
-      </Container>
+      </Box>
     </AppBar>
   );
 }

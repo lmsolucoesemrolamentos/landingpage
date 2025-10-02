@@ -123,14 +123,14 @@ export default function MaintenanceSection() {
             >
               <Box
                 component="i"
-                className={'ri-discount-percent-line'}
+                className={'ri-shield-flash-line'}
                 sx={{ fontSize: 48, mb: 2, opacity: 0.5 }}
               />
               <Typography variant="h6" className='gradient-text' mb={1} >
-                + ECONOMIA
+                + CONFIABILIDADE
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                <b>Reduz custos em até 40–65%</b> em comparação com a compra de rolamentos novos, mantendo desempenho equivalente.
+                Recupera a performance original por meio de inspeção, usinagem, substituição de componentes e testes rigorosos, <b>garantindo segurança operacional.</b>
               </Typography>
             </Box>
           </Grid>
@@ -144,14 +144,14 @@ export default function MaintenanceSection() {
             >
               <Box
                 component="i"
-                className={'ri-discount-percent-line'}
+                className={'ri-timer-flash-line'}
                 sx={{ fontSize: 48, mb: 2, opacity: 0.5 }}
               />
               <Typography variant="h6" className='gradient-text' mb={1} >
-                + ECONOMIA
+                + DISPONIBILIDADE
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                <b>Reduz custos em até 40–65%</b> em comparação com a compra de rolamentos novos, mantendo desempenho equivalente.
+                <b>Reduz prazos</b> em relação à fabricação de peças novas, garantindo <b>retorno rápido</b> dos rolamentos à operação e <b>menor impacto financeiro.</b>
               </Typography>
             </Box>
           </Grid>

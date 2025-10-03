@@ -1,3 +1,5 @@
+'use client';
+
 import {
   AppBar,
   Box,
@@ -18,6 +20,14 @@ const navItems = [
 ];
 
 export default function Navbar() {
+  // Função para fechar o menu mobile
+  const closeMobileMenu = () => {
+    const checkbox = document.getElementById('mobile-menu-toggle') as HTMLInputElement;
+    if (checkbox) {
+      checkbox.checked = false;
+    }
+  };
+
   return (
     <>
       {/* Hidden checkbox para controlar o menu - SEO friendly */}
@@ -184,7 +194,7 @@ export default function Navbar() {
       <nav className="mobile-menu-sidebar" aria-label="Menu principal mobile">
         <div className="mobile-menu-header">
           <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-            <Link href="/" style={{ textDecoration: 'none' }}>
+            <Link href="/" style={{ textDecoration: 'none' }} onClick={closeMobileMenu}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <Image
                   src="/images/LM_logo2.svg"
@@ -223,12 +233,16 @@ export default function Navbar() {
               key={item.label}
               href={item.href}
               className="mobile-menu-link"
+              onClick={closeMobileMenu}
             >
               {item.label}
             </Link>
           ))}
 
-          <Button sx={{ ...ctaButtonStyle }}>
+          <Button
+            sx={{ ...ctaButtonStyle }}
+            onClick={closeMobileMenu}
+          >
             Falar Com Especialista
           </Button>
         </div>

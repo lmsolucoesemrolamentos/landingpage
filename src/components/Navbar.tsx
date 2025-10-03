@@ -7,6 +7,7 @@ import {
 } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ctaButtonStyle } from '@/styles/globalStyles';
 
 const navItems = [
   { label: 'Sob demanda', href: '#sob-demanda' },
@@ -182,9 +183,31 @@ export default function Navbar() {
       {/* Mobile Menu Sidebar */}
       <nav className="mobile-menu-sidebar" aria-label="Menu principal mobile">
         <div className="mobile-menu-header">
-          <Typography variant="h6" sx={{ color: 'primary.main', fontWeight: 600 }}>
-            Menu
-          </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+            <Link href="/" style={{ textDecoration: 'none' }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Image
+                  src="/images/LM_logo2.svg"
+                  alt="LM logo"
+                  width={40}
+                  height={40}
+                  style={{ borderRadius: 4 }}
+                />
+                <Typography
+                  variant="h6"
+                  component="span"
+                  sx={{
+                    textAlign: 'left',
+                    fontWeight: 700,
+                    color: 'primary.main',
+                    fontSize: { xs: '1rem', md: '1.25rem', minWidth: 185 },
+                  }}
+                >
+                  LM SOLUÇÕES <br /> EM ROLAMENTOS
+                </Typography>
+              </Box>
+            </Link>
+          </Box>
           <label
             htmlFor="mobile-menu-toggle"
             className="mobile-menu-close"
@@ -205,9 +228,9 @@ export default function Navbar() {
             </Link>
           ))}
 
-          <Link href="#contato" className="mobile-menu-cta">
-            Solicitar Orçamento
-          </Link>
+          <Button sx={{ ...ctaButtonStyle }}>
+            Falar Com Especialista
+          </Button>
         </div>
       </nav>
     </>

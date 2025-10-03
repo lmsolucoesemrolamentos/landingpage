@@ -4,16 +4,7 @@ import { Box, Button, Divider, Grid, Typography } from '@mui/material';
 import BearingShowCard from './BearingShowCard';
 import Image from 'next/image';
 import { useState } from 'react';
-
-const ctaButtonStyle = {
-  opacity: 1,
-  padding: { xs: '16px', md: '24px' },
-  borderRadius: 2,
-  fontWeight: 400,
-  fontSize: { xs: '16px', md: '24px' },
-  color: 'white',
-  background: 'radial-gradient(67.91% 128.31% at 54.59% 136.4%, #FF4D00 0%, #FF8800 100%)'
-}
+import { ctaButtonStyle } from '@/styles/globalStyles';
 
 interface BearingTag {
   icon: string;

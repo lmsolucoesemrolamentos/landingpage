@@ -56,8 +56,8 @@ const theme = createTheme({
       paper: '#F8F9FA', // BG SEARCH - cinza claro
     },
     text: {
-      primary: '#3F4A5C', // H4 REGULAR - azul escuro
-      secondary: '#6C757D', // Subtitle, Caption - cinza médio
+      primary: '#181A22', // H4 REGULAR - azul escuro
+      secondary: '#5D606E', // Subtitle, Caption - cinza médio
     },
     grey: {
       50: '#F8F9FA', // BG SEARCH
@@ -156,7 +156,7 @@ const theme = createTheme({
        fontWeight: 400,
       fontSize: '16px', 
        '@media (min-width:600px)': {
-        fontSize: '20px',
+        fontSize: '24px',
       },     
       lineHeight: 1.14,
       letterSpacing: 0,

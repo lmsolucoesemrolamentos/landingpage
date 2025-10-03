@@ -10,6 +10,7 @@ import CustomProjectSection from "@/components/CustomProjectSection";
 import MaintenanceSection from "@/components/MaintenanceSection";
 import WhoWeAreSection from "@/components/WhoWeAreSection";
 import WeDoAllSection from "@/components/WeDoAll";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -63,7 +64,8 @@ export default function Home() {
               <WhoWeAreSection />
               <WeDoAllSection />
 
-              <ServicesSection />
+              <Footer />
+
             </Box>
           </Box>
         </Box>

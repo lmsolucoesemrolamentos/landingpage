@@ -237,9 +237,22 @@ html {
 gap: 10px;
 opacity: 1;
 padding: 24px;
-border-radius: 10px;
+border-radius: 4px !important;
 font-weight: 500;
 font-size: 16px;
 color: white;
 background: radial-gradient(67.91% 128.31% at 54.59% 136.4%, #FF4D00 0%, #FF8800 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+}
+
+.border-default {
+  border-radius: 4px;
+ }
+
+ @media (min-width: 600px) {
+  .border-default {
+  border-radius: 10px;
+ }
+ .cntt-button {
+  border-radius: 10px;
+ }
 }

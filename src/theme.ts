@@ -93,10 +93,10 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'var(--font-teachers), system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji"',
+    fontFamily: `var(--font-teachers), 'Teachers', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif`,
     // H1 — Bold 40px / 106% / 0%
     h1: {
-      fontFamily: 'var(--font-teachers)',
+      fontFamily: `var(--font-teachers), 'Teachers', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif`,
       fontWeight: 700,
       fontStyle: 'normal', // Bold é peso, não estilo
       fontSize: '40px',      // 40px
@@ -105,6 +105,7 @@ const theme = createTheme({
     },
     // H2 — Semi Bold 160px / 114% / 0
     h2: {
+      fontFamily: `var(--font-teachers), 'Teachers', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif`,
       fontWeight: 600,
       fontSize: '32px', 
        '@media (min-width:600px)': {

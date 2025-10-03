@@ -4,6 +4,7 @@ import 'remixicon/fonts/remixicon.css';
 // import ThemeProvider from "../components/ThemeProvider";
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import theme from '../theme';
+import { teachers } from '../fonts';
 
 export const metadata: Metadata = {
   title: "LM Soluções em Rolamentos | Indústria Petrolífera e Agronegócio",
@@ -106,7 +107,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>
+      <body className={teachers.className}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           {children}

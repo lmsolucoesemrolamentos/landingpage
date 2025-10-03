@@ -15,15 +15,18 @@ interface BearingItem {
   title: string;
   description: string;
   tags: BearingTag[];
+  highlight?: boolean;
 }
 
 
 interface BearingShowCardProps {
   bearingData: BearingItem[];
+  selectedIndex: number;
+  onSelectBearing: (index: number) => void;
 }
 
 
-export default function BearingShowCard({ bearingData }: BearingShowCardProps) {
+export default function BearingShowCard({ bearingData, selectedIndex, onSelectBearing }: BearingShowCardProps) {
   const [searchTerm, setSearchTerm] = useState('')
   const [filteredData, setFilteredData] = useState(bearingData)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
@@ -64,7 +67,8 @@ export default function BearingShowCard({ bearingData }: BearingShowCardProps) {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        gap: 3,
+        gap: { xs: 2, md: 4 },
+        py: { xs: 2, md: 4 },
         width: '100%',
       }}
     >
@@ -75,6 +79,7 @@ export default function BearingShowCard({ bearingData }: BearingShowCardProps) {
           alignItems: 'center',
           justifyContent: 'space-between',
           gap: 2,
+          px: { xs: 2, md: 4 },
         }}
       >
         {/* Campo de pesquisa */}
@@ -86,8 +91,11 @@ export default function BearingShowCard({ bearingData }: BearingShowCardProps) {
             startAdornment: <Search sx={{ color: '#FF8800', mr: 1 }} />,
             sx: {
               borderRadius: '25px',
+              border: 'none !important',
               '& .MuiOutlinedInput-notchedOutline': {
-                borderColor: '#FF8800',
+                borderRadius: '0px',
+                border: 'none',
+                borderBottom: '1px solid #A9ADBE',
               },
               '&:hover .MuiOutlinedInput-notchedOutline': {
                 borderColor: '#FF8800',
@@ -108,6 +116,7 @@ export default function BearingShowCard({ bearingData }: BearingShowCardProps) {
           <IconButton
             onClick={scrollLeft}
             sx={{
+              borderRadius: 0.5,
               backgroundColor: 'rgba(255, 136, 0, 0.1)',
               color: '#FF8800',
               '&:hover': {
@@ -120,6 +129,7 @@ export default function BearingShowCard({ bearingData }: BearingShowCardProps) {
           <IconButton
             onClick={scrollRight}
             sx={{
+              borderRadius: 0.5,
               backgroundColor: 'rgba(255, 136, 0, 0.1)',
               color: '#FF8800',
               '&:hover': {
@@ -138,11 +148,11 @@ export default function BearingShowCard({ bearingData }: BearingShowCardProps) {
         sx={{
           display: 'flex',
           overflowX: 'auto',
-          gap: 3,
+          gap: { xs: 2, md: 4 },
           pb: 2,
+          px: { xs: 2, md: 4 },
           scrollBehavior: 'smooth',
           scrollSnapType: "x mandatory",
-          scrollPaddingInline: { xs: 16, md: 32 },
           '&::-webkit-scrollbar': {
             height: 8,
           },
@@ -170,22 +180,23 @@ export default function BearingShowCard({ bearingData }: BearingShowCardProps) {
         {/* Renderiza todos os items para SEO, mas esconde os filtrados */}
         {bearingData.map((item, index) => {
           const isVisible = itemsToShow.includes(item)
+          const isSelected = index === selectedIndex
 
           return (
             <Card
               key={index}
+              onClick={() => onSelectBearing(index)}
               sx={{
                 minWidth: 280,
                 maxWidth: 280,
                 display: isVisible ? 'flex' : 'none', // Esconde visualmente mas mantém no DOM
                 flexDirection: 'column',
-                boxShadow: 3,
+                bgcolor: isSelected ? 'rgba(255, 136, 0, 0.1)' : 'background.default',
+                boxShadow: 0,
                 borderRadius: 2,
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                '&:hover': {
-                  transform: 'translateY(-8px)',
-                  boxShadow: 6,
-                },
+                cursor: 'pointer',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease',
+                border: isSelected ? '2px solid #FF8800' : '2px solid transparent',
               }}
             >
               {/* Imagem do rolamento */}
@@ -193,7 +204,7 @@ export default function BearingShowCard({ bearingData }: BearingShowCardProps) {
                 sx={{
                   position: 'relative',
                   height: 200,
-                  backgroundColor: '#f5f5f5',
+                  // backgroundColor: '#f5f5f5',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -233,11 +244,9 @@ export default function BearingShowCard({ bearingData }: BearingShowCardProps) {
 
                 {/* Título */}
                 <Typography
-                  variant="h6"
+                  variant="body1"
                   sx={{
-                    fontWeight: 600,
-                    mb: 1,
-                    lineHeight: 1.3,
+                    color: '#181A22',
                   }}
                 >
                   {item.title}

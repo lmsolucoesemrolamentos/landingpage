@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import {
   Box,
   TextField,
@@ -13,10 +13,55 @@ import { Search as SearchIcon, Close as CloseIcon } from '@mui/icons-material';
 export default function SearchBar() {
   const [expanded, setExpanded] = useState(false);
   const [value, setValue] = useState('');
+  const [canClose, setCanClose] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const expandTimeRef = useRef<number | null>(null);
 
-  const handleExpand = () => setExpanded(true);
-  const handleClose = () => { setExpanded(false); setValue(''); };
-  const handleClickAway = () => { if (expanded && !value.trim()) setExpanded(false); };
+  const handleExpand = () => {
+    setExpanded(true);
+    setCanClose(false);
+
+    // Marca o tempo de expansão
+    expandTimeRef.current = Date.now();
+
+    // Permite fechar após 1 segundo
+    setTimeout(() => {
+      setCanClose(true);
+    }, 1000);
+
+    // Foca o input após um pequeno delay para garantir que funcione no mobile
+    setTimeout(() => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+        // No mobile, garante que o cursor apareça
+        inputRef.current.click();
+      }
+    }, 100);
+  };
+
+  const handleClose = () => {
+    setExpanded(false);
+    setValue('');
+    setCanClose(false);
+    expandTimeRef.current = null;
+  };
+
+  const handleClickAway = () => {
+    if (expanded && canClose && !value.trim()) {
+      setExpanded(false);
+      setCanClose(false);
+      expandTimeRef.current = null;
+    }
+  };
+
+  // Limpa timers quando o componente é desmontado
+  useEffect(() => {
+    return () => {
+      if (expandTimeRef.current) {
+        expandTimeRef.current = null;
+      }
+    };
+  }, []);
 
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
@@ -48,16 +93,24 @@ export default function SearchBar() {
         >
           <TextField
             fullWidth
+            inputRef={inputRef}
             value={value}
             onChange={(e) => setValue(e.target.value)}
             onClick={!expanded ? handleExpand : undefined}
             onFocus={!expanded ? handleExpand : undefined}
-            autoFocus={expanded}
             placeholder="Pesquise por serviços, rolamentos, soluções..."
             variant="outlined"
             size="small" // base pra 40px
             InputProps={{
               readOnly: !expanded, // no compacto, só clica pra expandir
+              inputProps: {
+                // Propriedades específicas para mobile
+                autoComplete: 'off',
+                autoCorrect: 'off',
+                autoCapitalize: 'off',
+                spellCheck: false,
+                inputMode: 'search',
+              },
               startAdornment: (
                 <InputAdornment position="start">
                   <SearchIcon sx={{ color: 'primary.main' }} />

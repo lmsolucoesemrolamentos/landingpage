@@ -9,6 +9,7 @@ import PartnerBrandSection from "@/components/PartnerBrandSection";
 import CustomProjectSection from "@/components/CustomProjectSection";
 import MaintenanceSection from "@/components/MaintenanceSection";
 import WhoWeAreSection from "@/components/WhoWeAreSection";
+import WeDoAllSection from "@/components/WeDoAll";
 
 export default function Home() {
   return (
@@ -60,10 +61,8 @@ export default function Home() {
               <CustomProjectSection />
               <MaintenanceSection />
               <WhoWeAreSection />
+              <WeDoAllSection />
 
-              <ServicesSection />
-              <ServicesSection />
-              <ServicesSection />
               <ServicesSection />
             </Box>
           </Box>

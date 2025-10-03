@@ -6,6 +6,8 @@ import {
 } from '@mui/material';
 import Image from 'next/image';
 import SearchBar from './SearchBar';
+// import { link } from 'fs';
+import Link from 'next/link';
 
 const gradientText = {
   background: 'linear-gradient(92.99deg, #181A22 2.48%, #324592 103.8%)',
@@ -34,12 +36,12 @@ const tileSx = {
 };
 
 const items = [
-  { icon: 'ri-settings-3-line', label: 'Rolamentos Padrões' },
-  { icon: 'ri-pencil-ruler-line', label: 'Projetos personalizados' },
-  { icon: 'ri-search-line', label: 'Inspeção e manutenção' },
-  { icon: 'ri-shape-line', label: 'Substituição de componentes' },
-  { icon: 'ri-user-3-line', label: 'Consultoria' },
-  { icon: 'ri-tools-line', label: 'Repotencialização' },
+  { icon: 'ri-settings-3-line', label: 'Rolamentos Padrões', link: '#rolamentos' },
+  { icon: 'ri-pencil-ruler-line', label: 'Projetos personalizados', link: '#projetos-personalizados' },
+  { icon: 'ri-search-line', label: 'Inspeção e manutenção', link: '#manutencao' },
+  { icon: 'ri-shape-line', label: 'Substituição de componentes', link: 'manutencao' },
+  { icon: 'ri-user-3-line', label: 'Consultoria', link: "https://wa.me/5511949820295?text=Ol%C3%A1%2C%20vim%20pelo%20site%2C%20gostaria%20de%20fazer%20um%20or%C3%A7amento" },
+  { icon: 'ri-tools-line', label: 'Repotencialização', link: '#manutencao' },
 ];
 
 const Hero = () => {
@@ -87,7 +89,7 @@ const Hero = () => {
         </Grid>
 
         <Grid size={{ xs: 9, sm: 5 }} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-          <SearchBar />
+          {/* <SearchBar /> */}
         </Grid>
       </Grid>
 
@@ -202,9 +204,22 @@ const Hero = () => {
               {[0, 2, 4].map((start) => (
                 <Box key={start} sx={{ display: 'flex', gap: { xs: 0.5, sm: 1 } }}>
                   {[items[start], items[start + 1]].map((item) => (
-                    <Box key={item.label} sx={{ ...tileSx }}>
+                    <Box
+                      key={item.label}
+                      component={Link}
+                      href={item.link}
+                      sx={{ ...tileSx, cursor: 'pointer' }}
+                    // onClick={() => {
+                    // const el = document.querySelector(item.link);
+                    // if (el) {
+                    //   el.scrollIntoView({ behavior: 'smooth' });
+                    // }
+                    // }}
+                    >
                       <Box component="i" className={item.icon} />
-                      <Typography variant="body2" textAlign={{ xs: 'center', sm: 'left' }}>{item.label}</Typography>
+                      <Typography variant="body2" textAlign={{ xs: 'center', sm: 'left' }}>
+                        {item.label}
+                      </Typography>
                     </Box>
                   ))}
                 </Box>

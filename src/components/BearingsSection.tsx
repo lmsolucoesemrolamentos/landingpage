@@ -26,7 +26,7 @@ export default function BearingsSection() {
 
 
         {/* Header Section */}
-        <Box sx={{ mb: { xs: 4, md: 6 }, px: { xs: 2, md: 4 }, }}>
+        <Box sx={{ px: { xs: 2, md: 4 }, }}>
 
           <SectionIcon
             icon="ri-settings-5-line"

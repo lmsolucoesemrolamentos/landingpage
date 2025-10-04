@@ -15,61 +15,60 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <main>
-      <Container component="section" sx={{ maxWidth: '3000px !important', p: '0px !important', m: 0 }}>
-        <Box sx={{
-          position: "relative",
-          height: "100vh",
-          width: "100%",
-        }}>
-          {/* camada de fundo */}
-          <Box>
-            <Box sx={{
-              position: "absolute",
-              top: '30%',
-              left: 0,
-            }}>
-              <Image
-                src="/images/rolamento_background.png"
-                alt="Rolamento industrial de alta performance para indústria petrolífera e agronegócio - LM Soluções em Rolamentos"
-                width={2000}
-                height={2000}
-                priority
-              />
-            </Box>
-          </Box>
-          {/* camada do conteudo que deve ficar em cima da outra camada */}
+      <Box sx={{
+        position: "relative",
+        height: "100vh",
+        width: "100%",
+      }}>
+        {/* camada de fundo */}
+        <Box>
           <Box sx={{
-            position: "relative",
-            display: "flex",
-            justifyContent: "flex-start",
-            alignItems: "center",
-            flexDirection: "column",
-            zIndex: 1,
-            // gap: 2
-            gap: 0
+            position: "absolute",
+            top: '30%',
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            zIndex: 0,
           }}>
-            <Hero />
-            <Navbar />
-            <Box sx={{
-              width: '100%',
-              backgroundColor: 'rgba(255, 255, 255, 0.8)',
-              backdropFilter: 'blur(200px)',
-            }}>
-              <ServicesSection />
-              <BearingsSection />
-              <NotFoundSection />
-              <PartnerBrandSection />
-              <CustomProjectSection />
-              <MaintenanceSection />
-              <WhoWeAreSection />
-              <WeDoAllSection />
-
-              <Footer />
-
-            </Box>
+            <Image
+              src="/images/rolamento_background.png"
+              alt="Rolamento industrial de alta performance para indústria petrolífera e agronegócio - LM Soluções em Rolamentos"
+              width={2000}
+              height={2000}
+              priority
+            />
           </Box>
         </Box>
-      </Container>
+        {/* camada do conteudo que deve ficar em cima da outra camada */}
+        <Box sx={{
+          position: "relative",
+          zIndex: 1,
+        }}>
+          <Hero />
+          <Navbar />
+          <Box sx={{
+            width: '100%',
+            backgroundColor: 'rgba(255, 255, 255, 0.8)',
+            backdropFilter: 'blur(200px)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: { xs: 3, md: 4 }
+          }}>
+            <ServicesSection />
+            <BearingsSection />
+            <NotFoundSection />
+            <PartnerBrandSection />
+            <CustomProjectSection />
+            <MaintenanceSection />
+            <WhoWeAreSection />
+            <WeDoAllSection />
+
+            <Footer />
+          </Box>
+        </Box>
+      </Box>
     </main>
   );
 }

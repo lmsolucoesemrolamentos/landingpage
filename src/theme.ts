@@ -143,7 +143,7 @@ const theme = createTheme({
         },
     // Subtitle 1 — Mixed 64px / 99% / 0  (usei 500 de peso)
     subtitle1: {
-        fontWeight: 400,
+      fontWeight: 400,
       fontSize: '20px', 
        '@media (min-width:600px)': {
         fontSize: '32px',

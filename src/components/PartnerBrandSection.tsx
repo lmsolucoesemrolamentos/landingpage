@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
 import Image from 'next/image';
+import { useMemo } from 'react';
 
 const brands = [
   { name: 'FAG', logo: '/images/brands/fag.png' },
@@ -11,6 +12,47 @@ const brands = [
 ];
 
 export default function PartnerBrandSection() {
+  // Criamos múltiplas sequências para garantir scroll infinito em telas muito largas
+  // O número de repetições é calculado para cobrir até 4K+ com margem de segurança
+  const brandSequences = useMemo(() => {
+    const sequences = [];
+    const sequenceCount = 4; // 4 sequências para cobrir telas ultra-wide
+
+    for (let i = 0; i < sequenceCount; i++) {
+      sequences.push(
+        brands.map((brand, index) => (
+          <Box
+            key={`sequence-${i}-brand-${index}`}
+            sx={{
+              minWidth: { xs: 150, md: 200 },
+              height: { xs: 80, md: 100 },
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              mx: 1,
+              position: 'relative',
+              flexShrink: 0, // Evita que os itens encolham
+            }}
+          >
+            <Image
+              src={brand.logo}
+              alt={`${brand.name} - Parceiro oficial de rolamentos industriais`}
+              fill
+              style={{
+                objectFit: 'contain',
+                padding: '10px',
+              }}
+              loading="lazy" // Lazy loading para melhor performance
+              sizes="(max-width: 768px) 150px, 200px"
+            />
+          </Box>
+        ))
+      );
+    }
+
+    return sequences.flat();
+  }, []);
+
   return (
     <Box
       sx={{
@@ -23,68 +65,19 @@ export default function PartnerBrandSection() {
         sx={{
           display: 'flex',
           width: 'fit-content',
-          animation: 'scroll 30s linear infinite',
+          animation: 'scroll 40s linear infinite', // Animação mais lenta para suavidade
+          willChange: 'transform', // Otimização de performance
           '@keyframes scroll': {
             '0%': {
               transform: 'translateX(0)',
             },
             '100%': {
-              transform: 'translateX(-50%)',
+              transform: 'translateX(-25%)', // Ajustado para 4 sequências (100% / 4 = 25%)
             },
           },
         }}
       >
-        {/* Primeira sequência das marcas */}
-        {brands.map((brand, index) => (
-          <Box
-            key={`first-${index}`}
-            sx={{
-              minWidth: { xs: 150, md: 200 },
-              height: { xs: 80, md: 100 },
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              mx: 1,
-              position: 'relative',
-            }}
-          >
-            <Image
-              src={brand.logo}
-              alt={`${brand.name} - Parceiro oficial de rolamentos industriais`}
-              fill
-              style={{
-                objectFit: 'contain',
-                padding: '10px',
-              }}
-            />
-          </Box>
-        ))}
-
-        {/* Segunda sequência (duplicada para scroll infinito) */}
-        {brands.map((brand, index) => (
-          <Box
-            key={`first-${index}`}
-            sx={{
-              minWidth: { xs: 150, md: 200 },
-              height: { xs: 80, md: 100 },
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              mx: 1,
-              position: 'relative',
-            }}
-          >
-            <Image
-              src={brand.logo}
-              alt={`${brand.name} - Parceiro oficial de rolamentos industriais`}
-              fill
-              style={{
-                objectFit: 'contain',
-                padding: '10px',
-              }}
-            />
-          </Box>
-        ))}
+        {brandSequences}
       </Box>
     </Box>
   );

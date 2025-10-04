@@ -2,7 +2,8 @@ import {
   Box,
   Typography,
   Grid,
-  Paper
+  Paper,
+  Container
 } from '@mui/material';
 import Image from 'next/image';
 import SearchBar from './SearchBar';
@@ -46,19 +47,20 @@ const items = [
 
 const Hero = () => {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'start',
-        width: '100%',
-        minHeight: { xs: '0px', sm: '60vh', md: '70vh' },
-        px: { xs: 2, sm: 4 },
-        py: { xs: 2, sm: 4 },
-        gap: 2,
-      }}
-    >
-      {/* <Box sx={{
+    <Container maxWidth="xl">
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'start',
+          width: '100%',
+          minHeight: { xs: '0px', sm: '60vh', md: '90vh' },
+          px: { xs: 2, sm: 4 },
+          py: { xs: 2, sm: 4 },
+          gap: 2,
+        }}
+      >
+        {/* <Box sx={{
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
@@ -77,24 +79,24 @@ const Hero = () => {
         <SearchBar />
       </Box> */}
 
-      <Grid container spacing={{ xs: 2, sm: 10 }} sx={{ width: '100%' }}>
-        <Grid size={{ xs: 3, sm: 7 }}>
-          <Image
-            src="/images/LM_logo2.svg"
-            alt="LM logo"
-            width={40}
-            height={40}
-            style={{ borderRadius: 4 }}
-          />
+        <Grid container spacing={{ xs: 2, sm: 10 }} sx={{ width: '100%' }}>
+          <Grid size={{ xs: 3, sm: 7 }}>
+            <Image
+              src="/images/LM_logo2.svg"
+              alt="LM logo"
+              width={40}
+              height={40}
+              style={{ borderRadius: 4 }}
+            />
+          </Grid>
+
+          <Grid size={{ xs: 9, sm: 5 }} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+            {/* <SearchBar /> */}
+          </Grid>
         </Grid>
 
-        <Grid size={{ xs: 9, sm: 5 }} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-          {/* <SearchBar /> */}
-        </Grid>
-      </Grid>
-
-      <Grid container spacing={{ xs: 2, sm: 10 }} sx={{ width: '100%' }}>
-        {/* <Grid size={{ xs: 12, sm: 6 }}>
+        <Grid container spacing={{ xs: 2, sm: 10 }} sx={{ width: '100%' }}>
+          {/* <Grid size={{ xs: 12, sm: 6 }}>
           <Typography
             variant="h1"
             sx={{
@@ -127,68 +129,68 @@ const Hero = () => {
           </Typography>
         </Grid> */}
 
-        <Grid size={{ xs: 12, sm: 7 }}>
-          <Box
-            sx={{
-              containerType: 'inline-size',
-              minWidth: 0, // evita overflow em grids
-            }}
-          >
+          <Grid size={{ xs: 12, sm: 7 }}>
             <Box
               sx={{
-                color: 'text.primary',
-                fontWeight: 700,
-                lineHeight: 1.1,
-                // escala entre 1.75rem e 4.25rem, guiado pela largura do container (cqi)
-                fontSize: 'clamp(1rem, 11cqi, 10.25rem)',
+                containerType: 'inline-size',
+                minWidth: 0, // evita overflow em grids
               }}
             >
               <Box
                 sx={{
-                  ...gradientText,
-                  whiteSpace: { xs: 'nowrap', sm: 'nowrap' },
-                  display: 'inline-block',
-                  flexWrap: 'nowrap'
+                  color: 'text.primary',
+                  fontWeight: 700,
+                  lineHeight: 1.1,
+                  // escala entre 1.75rem e 4.25rem, guiado pela largura do container (cqi)
+                  fontSize: 'clamp(1rem, 11cqi, 10.25rem)',
                 }}
               >
-                SOLUÇÕES
-              </Box>
-              <Box
-                sx={{
-                  color: 'primary.main',
-                  whiteSpace: { xs: 'nowrap', sm: 'nowrap' },
-                  display: 'inline-block',
-                  flexWrap: 'nowrap'
-                }}>
-                ESPECIALIZADAS
-              </Box>
-              <Box
-                sx={{
-                  ...gradientText,
-                  whiteSpace: { xs: 'nowrap', sm: 'nowrap' },
-                  display: 'inline-block',
-                  flexWrap: 'nowrap'
-                }}
-              >
-                EM ROLAMENTOS
+                <Box
+                  sx={{
+                    ...gradientText,
+                    whiteSpace: { xs: 'nowrap', sm: 'nowrap' },
+                    display: 'inline-block',
+                    flexWrap: 'nowrap'
+                  }}
+                >
+                  SOLUÇÕES
+                </Box>
+                <Box
+                  sx={{
+                    color: 'primary.main',
+                    whiteSpace: { xs: 'nowrap', sm: 'nowrap' },
+                    display: 'inline-block',
+                    flexWrap: 'nowrap'
+                  }}>
+                  ESPECIALIZADAS
+                </Box>
+                <Box
+                  sx={{
+                    ...gradientText,
+                    whiteSpace: { xs: 'nowrap', sm: 'nowrap' },
+                    display: 'inline-block',
+                    flexWrap: 'nowrap'
+                  }}
+                >
+                  EM ROLAMENTOS
+                </Box>
               </Box>
             </Box>
-          </Box>
-        </Grid>
+          </Grid>
 
-        <Grid size={{ xs: 12, sm: 5 }} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-          {/* Conteúdo do segundo grid item */}
-          <Box className='bg-glass' sx={{ width: { xs: '100%', sm: 'auto' }, minWidth: { xs: '100%', sm: 'auto' }, display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center', p: 2, borderRadius: 2, gap: 2 }}>
+          <Grid size={{ xs: 12, sm: 5 }} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+            {/* Conteúdo do segundo grid item */}
+            <Box className='bg-glass' sx={{ width: { xs: '100%', sm: 'auto' }, minWidth: { xs: '100%', sm: 'auto' }, display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center', p: 2, borderRadius: 2, gap: 2 }}>
 
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-              <Typography variant="h6" sx={{ ...gradientText }}>
-                NOSSAS ESPECIALIDADES
-              </Typography>
-              <Typography variant="body2" >
-                Com uma ampla variedade de serviços, estamos preparados para atender às demandas rigorozas do mercado, com profissionais altamente qualficados.
-              </Typography>
-            </Box>
-            {/* <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+                <Typography variant="h6" sx={{ ...gradientText }}>
+                  NOSSAS ESPECIALIDADES
+                </Typography>
+                <Typography variant="body2" >
+                  Com uma ampla variedade de serviços, estamos preparados para atender às demandas rigorozas do mercado, com profissionais altamente qualficados.
+                </Typography>
+              </Box>
+              {/* <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
               {[0, 2, 4].map((start) => (
                 <Box key={start} sx={{ display: 'flex', gap: 0.5 }}>
                   {[items[start], items[start + 1]].map((item) => (
@@ -200,37 +202,38 @@ const Hero = () => {
                 </Box>
               ))}
             </Box> */}
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 0.5, sm: 1 } }}>
-              {[0, 2, 4].map((start) => (
-                <Box key={start} sx={{ display: 'flex', gap: { xs: 0.5, sm: 1 } }}>
-                  {[items[start], items[start + 1]].map((item) => (
-                    <Box
-                      key={item.label}
-                      component={Link}
-                      href={item.link}
-                      sx={{ ...tileSx, cursor: 'pointer' }}
-                    // onClick={() => {
-                    // const el = document.querySelector(item.link);
-                    // if (el) {
-                    //   el.scrollIntoView({ behavior: 'smooth' });
-                    // }
-                    // }}
-                    >
-                      <Box component="i" className={item.icon} />
-                      <Typography variant="body2" textAlign={{ xs: 'center', sm: 'left' }}>
-                        {item.label}
-                      </Typography>
-                    </Box>
-                  ))}
-                </Box>
-              ))}
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 0.5, sm: 1 } }}>
+                {[0, 2, 4].map((start) => (
+                  <Box key={start} sx={{ display: 'flex', gap: { xs: 0.5, sm: 1 } }}>
+                    {[items[start], items[start + 1]].map((item) => (
+                      <Box
+                        key={item.label}
+                        component={Link}
+                        href={item.link}
+                        sx={{ ...tileSx, cursor: 'pointer' }}
+                      // onClick={() => {
+                      // const el = document.querySelector(item.link);
+                      // if (el) {
+                      //   el.scrollIntoView({ behavior: 'smooth' });
+                      // }
+                      // }}
+                      >
+                        <Box component="i" className={item.icon} />
+                        <Typography variant="body2" textAlign={{ xs: 'center', sm: 'left' }}>
+                          {item.label}
+                        </Typography>
+                      </Box>
+                    ))}
+                  </Box>
+                ))}
+              </Box>
+
             </Box>
-
-          </Box>
+          </Grid>
         </Grid>
-      </Grid>
 
-    </Box>
+      </Box>
+    </Container>
   );
 };
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Button, Divider, Grid, Typography } from '@mui/material';
+import { Box, Button, Container, Divider, Grid, Typography } from '@mui/material';
 import BearingShowCard from './BearingShowCard';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -109,56 +109,58 @@ export default function BearingShowSection() {
       />
 
       {/* Interface visível - mostra apenas o selecionado */}
-      <Grid container spacing={4} sx={{ borderRadius: 2, mx: { xs: 2, md: 4 } }}>
-        <Grid size={{ xs: 12, md: 6 }}>
-          <Image
-            src={bearingData[selectedBearingIndex].imgSrc}
-            alt={bearingData[selectedBearingIndex].title}
-            layout="responsive"
-            width={500}
-            height={300}
-          />
-        </Grid>
-        <Grid size={{ xs: 12, md: 6 }} sx={{ p: { xs: 2, md: 4 } }}>
-          <Box sx={{ height: '100%', display: "flex", flexDirection: "column", justifyContent: 'space-between', alignItems: 'start', gap: 2 }}>
-            <Box>
-              <Typography variant="h6" className='gradient-text'>
-                {bearingData[selectedBearingIndex].title.toUpperCase()}
-              </Typography>
-              <Typography variant="body1" color="text.secondary">
-                {bearingData[selectedBearingIndex].description}
-              </Typography>
-            </Box>
-            <Box>
-              <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 2, mb: 2 }}>
-                {bearingData[selectedBearingIndex].tags.map((tag, index) => (
-                  <>
-                    {index > 0 && (
-                      <Divider orientation="vertical" flexItem sx={{ px: 0 }} />
-                    )}
-                    <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <Box
-                        component="i"
-                        className={tag.icon as string}
-                        sx={{
-                          fontSize: { xs: '20px', md: '28px' },
-                          color: 'primary.main'
-                        }}
-                      />
-                      <Typography variant="body1" color="text.secondary">
-                        {tag.title}
-                      </Typography>
-                    </Box>
-                  </>
-                ))}
+      <Container maxWidth="xl">
+        <Grid container spacing={4} sx={{ borderRadius: 2, mx: { xs: 2, md: 4 } }}>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Image
+              src={bearingData[selectedBearingIndex].imgSrc}
+              alt={bearingData[selectedBearingIndex].title}
+              layout="responsive"
+              width={500}
+              height={300}
+            />
+          </Grid>
+          <Grid size={{ xs: 12, md: 6 }} sx={{ p: { xs: 2, md: 4 } }}>
+            <Box sx={{ height: '100%', display: "flex", flexDirection: "column", justifyContent: 'space-between', alignItems: 'start', gap: 2 }}>
+              <Box>
+                <Typography variant="h6" className='gradient-text'>
+                  {bearingData[selectedBearingIndex].title.toUpperCase()}
+                </Typography>
+                <Typography variant="body1" color="text.secondary">
+                  {bearingData[selectedBearingIndex].description}
+                </Typography>
               </Box>
-              <Button sx={{ ...ctaButtonStyle }}>
-                Solicitar orçamento
-              </Button>
+              <Box>
+                <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 2, mb: 2 }}>
+                  {bearingData[selectedBearingIndex].tags.map((tag, index) => (
+                    <>
+                      {index > 0 && (
+                        <Divider orientation="vertical" flexItem sx={{ px: 0 }} />
+                      )}
+                      <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <Box
+                          component="i"
+                          className={tag.icon as string}
+                          sx={{
+                            fontSize: { xs: '20px', md: '28px' },
+                            color: 'primary.main'
+                          }}
+                        />
+                        <Typography variant="body1" color="text.secondary">
+                          {tag.title}
+                        </Typography>
+                      </Box>
+                    </>
+                  ))}
+                </Box>
+                <Button sx={{ ...ctaButtonStyle }}>
+                  Solicitar orçamento
+                </Button>
+              </Box>
             </Box>
-          </Box>
+          </Grid>
         </Grid>
-      </Grid>
+      </Container>
 
 
     </Box>

@@ -7,6 +7,7 @@ import {
 import Image from 'next/image';
 // import { link } from 'fs';
 import Link from 'next/link';
+import SearchBar from './SearchBar';
 
 const gradientText = {
   background: 'linear-gradient(92.99deg, #181A22 2.48%, #324592 103.8%)',
@@ -89,7 +90,7 @@ const Hero = () => {
           </Grid>
 
           <Grid size={{ xs: 9, sm: 5 }} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-            {/* <SearchBar /> */}
+            <SearchBar />
           </Grid>
         </Grid>
 

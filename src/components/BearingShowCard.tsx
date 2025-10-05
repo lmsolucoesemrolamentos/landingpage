@@ -149,7 +149,7 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
           display: 'flex',
           overflowX: 'auto',
           gap: { xs: 2, md: 4 },
-          pb: 2,
+          // pb: 2,
           px: { xs: 2, md: 4 },
           scrollBehavior: 'smooth',
           scrollSnapType: "x mandatory",
@@ -187,9 +187,9 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
               key={index}
               onClick={() => onSelectBearing(index)}
               sx={{
-                minWidth: 280,
-                maxWidth: 280,
-                display: isVisible ? 'flex' : 'none', // Esconde visualmente mas mantém no DOM
+                minWidth: 200,
+                maxWidth: 200,
+                display: isVisible ? 'flex' : 'none',
                 flexDirection: 'column',
                 bgcolor: isSelected ? 'rgba(255, 136, 0, 0.1)' : 'background.default',
                 boxShadow: 0,
@@ -204,7 +204,7 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
                 sx={{
                   position: 'relative',
                   height: 200,
-                  // backgroundColor: '#f5f5f5',
+                  backgroundColor: '#ffffff',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -216,30 +216,36 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
                   fill
                   style={{
                     objectFit: 'contain',
-                    padding: '20px',
+                    padding: '0px',
                   }}
                 />
               </Box>
 
-              <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+              <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', p: 1, pb: '8px !important' }}>
                 {/* Tags */}
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 2 }}>
-                  {item.tags.map((tag, tagIndex) => (
-                    <Chip
-                      key={tagIndex}
-                      icon={<i className={tag.icon} />}
-                      label={tag.title}
-                      size="small"
-                      sx={{
-                        backgroundColor: '#FF8800',
-                        color: 'white',
-                        fontSize: '0.75rem',
-                        '& .MuiChip-icon': {
+                <Box sx={{ display: 'flex', flexWrap: 'nowrap', gap: 0, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <Box>
+                    {item.highlight && (
+                      <Chip
+                        label="Mais buscados"
+                        size="small"
+                        sx={{
+                          backgroundColor: 'primary.main',
                           color: 'white',
-                        },
-                      }}
-                    />
-                  ))}
+                          fontSize: { xs: '12px', md: '20px' },
+                          borderRadius: 0.5,
+                          '& .MuiChip-icon': {
+                            color: 'white',
+                          },
+                        }}
+                      />
+                    )}
+                  </Box>
+                  <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 0 }}>
+                    {item.tags.map((tag, tagIndex) => (
+                      <i className={tag.icon} key={tagIndex} style={{ fontSize: '20px', color: '#A9ADBE' }}></i>
+                    ))}
+                  </Box>
                 </Box>
 
                 {/* Título */}

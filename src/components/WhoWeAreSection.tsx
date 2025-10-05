@@ -1,16 +1,10 @@
 import {
   Box,
-  Button,
   Container,
   Grid,
   Typography,
 } from '@mui/material';
-import Navbar from './Navbar';
-import SectionIcon from './SectionIcon';
-import IndustryServiceCarousel from './IndustryServiceCarousel';
-import BearingShowSection from './BearingShowSection';
 import Image from 'next/image';
-import { ctaButtonStyle } from '@/styles/globalStyles';
 
 
 export default function WhoWeAreSection() {
@@ -24,7 +18,7 @@ export default function WhoWeAreSection() {
     >
 
       {/* Content */}
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" sx={{ padding: '0px !important' }}>
         <Box
           sx={{
             width: '100%',

@@ -22,12 +22,20 @@ export const metadata: Metadata = {
   authors: [{ name: "LM Soluções em Rolamentos" }],
   creator: "LM Soluções em Rolamentos",
   publisher: "LM Soluções em Rolamentos",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   robots: {
     index: true,
     follow: true,
     googleBot: {
       index: true,
       follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
   },
   openGraph: {
@@ -37,12 +45,25 @@ export const metadata: Metadata = {
     siteName: "LM Soluções em Rolamentos",
     locale: "pt_BR",
     type: "website",
+    images: [
+      {
+        url: "https://lmsolucoes.com.br/images/LM_logo1.svg",
+        width: 1200,
+        height: 630,
+        alt: "LM Soluções em Rolamentos",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "LM Soluções em Rolamentos | Especialistas em Soluções Industriais",
     description: "Soluções sob demanda para indústria petrolífera e agronegócio com rolamentos de alta performance.",
+    images: ["https://lmsolucoes.com.br/images/LM_logo1.svg"],
   },
+  alternates: {
+    canonical: "https://lmsolucoes.com.br",
+  },
+  category: "Indústria e Manufactura",
 };
 
 export default function RootLayout({
@@ -53,8 +74,13 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta name="theme-color" content="#324592" />
+        <meta name="color-scheme" content="light" />
         <link rel="canonical" href="https://lmsolucoes.com.br" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

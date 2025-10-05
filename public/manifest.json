@@ -1,0 +1,43 @@
+{
+  "name": "LM Soluções em Rolamentos",
+  "short_name": "LM Rolamentos",
+  "description": "Especialistas em rolamentos de alta performance para indústria petrolífera e agronegócio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fcfdfe",
+  "theme_color": "#324592",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/images/LM_logo1.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Rolamentos",
+      "short_name": "Rolamentos",
+      "description": "Ver catálogo de rolamentos",
+      "url": "/#rolamentos",
+      "icons": [{ "src": "/images/LM/icon.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Contato",
+      "short_name": "Contato",
+      "description": "Entre em contato conosco",
+      "url": "https://wa.me/5511949820295",
+      "icons": [{ "src": "/images/LM/icon.svg", "sizes": "192x192" }]
+    }
+  ]
+}

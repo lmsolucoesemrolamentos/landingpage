@@ -268,7 +268,7 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
           }}
         >
           <Typography variant="h6">
-            Nenhum rolamento encontrado para "{searchTerm}"
+            Nenhum rolamento encontrado para &quot;{searchTerm}&quot;
           </Typography>
           <Typography variant="body2">
             Tente usar outros termos de busca

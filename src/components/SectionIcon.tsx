@@ -1,5 +1,4 @@
-import { Box, Button } from '@mui/material';
-import Link from 'next/link';
+import { Box } from '@mui/material';
 
 interface SectionIconProps {
   icon: string;

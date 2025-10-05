@@ -3,10 +3,6 @@ import {
   Button,
   Typography,
 } from '@mui/material';
-import Navbar from './Navbar';
-import SectionIcon from './SectionIcon';
-import IndustryServiceCarousel from './IndustryServiceCarousel';
-import BearingShowSection from './BearingShowSection';
 import { ctaButtonStyle } from '@/styles/globalStyles';
 
 export default function CustomProjectSection() {

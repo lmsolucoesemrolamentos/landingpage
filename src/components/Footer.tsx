@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Typography, Grid, IconButton, Divider, Container } from '@mui/material';
+import { Box, Typography, IconButton, Container } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -56,7 +56,7 @@ export default function Footer() {
       </Box>
 
       {/* Container principal */}
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" sx={{ padding: '0px !important' }}>
         <Box
           sx={{
             position: 'relative',
@@ -266,7 +266,7 @@ export default function Footer() {
 
               {/* Links de navegação - Mobile */}
               <Box sx={{ mb: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
-                {['Diferencial', 'Serviços', 'Rolamentos', 'Quem somos', 'Fale conosco'].map((item, index) => (
+                {['Diferencial', 'Serviços', 'Rolamentos', 'Quem somos', 'Fale conosco'].map((item) => (
                   <Typography
                     key={item}
                     variant="body2"

@@ -26,7 +26,7 @@ export default function ServicesSection() {
 
 
         {/* Header Section */}
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" sx={{ padding: '0px !important' }}>
           <Box sx={{ mb: { xs: 4, md: 6 }, px: { xs: 2, md: 4 }, }}>
             <Box sx={{ width: '25%', height: '2px', background: 'linear-gradient(90deg, #FF8800 20%, transparent 100%)', mb: 2 }} >
             </Box>

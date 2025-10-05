@@ -2,11 +2,9 @@ import {
   Box,
   Typography,
   Grid,
-  Paper,
   Container
 } from '@mui/material';
 import Image from 'next/image';
-import SearchBar from './SearchBar';
 // import { link } from 'fs';
 import Link from 'next/link';
 
@@ -47,7 +45,7 @@ const items = [
 
 const Hero = () => {
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="xl" sx={{ padding: '0px !important' }}>
       <Box
         sx={{
           display: 'flex',
@@ -68,24 +66,24 @@ const Hero = () => {
         width: '100%',
         gap: 2,
       }}>
-        <Image
-          src="/images/LM_logo2.svg"
-          alt="LM logo"
-          width={40}
-          height={40}
-          style={{ borderRadius: 4 }}
-        />
-
-        <SearchBar />
+              <Image
+              src="/images/LM_logo2.svg"
+              alt="LM Soluções em Rolamentos - Logo"
+              width={40}
+              height={40}
+              priority
+              style={{ borderRadius: 4 }}
+            />        <SearchBar />
       </Box> */}
 
         <Grid container spacing={{ xs: 2, sm: 10 }} sx={{ width: '100%' }}>
           <Grid size={{ xs: 3, sm: 7 }}>
             <Image
               src="/images/LM_logo2.svg"
-              alt="LM logo"
+              alt="LM Soluções em Rolamentos - Logo"
               width={40}
               height={40}
+              priority
               style={{ borderRadius: 4 }}
             />
           </Grid>

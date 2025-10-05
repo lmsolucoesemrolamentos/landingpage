@@ -3,9 +3,7 @@ import {
   Container,
   Typography,
 } from '@mui/material';
-import Navbar from './Navbar';
 import SectionIcon from './SectionIcon';
-import IndustryServiceCarousel from './IndustryServiceCarousel';
 import BearingShowSection from './BearingShowSection';
 
 export default function BearingsSection() {
@@ -27,7 +25,7 @@ export default function BearingsSection() {
 
 
         {/* Header Section */}
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" sx={{ padding: '0px !important' }}>
           <Box sx={{ px: { xs: 2, md: 4 }, }}>
 
             <SectionIcon

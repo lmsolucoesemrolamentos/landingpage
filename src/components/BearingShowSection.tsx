@@ -109,7 +109,7 @@ export default function BearingShowSection() {
       />
 
       {/* Interface visível - mostra apenas o selecionado */}
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" sx={{ padding: '0px !important' }}>
         <Grid container spacing={4} sx={{ borderRadius: 2, mx: { xs: 2, md: 4 } }}>
           <Grid size={{ xs: 12, md: 6 }}>
             <Image

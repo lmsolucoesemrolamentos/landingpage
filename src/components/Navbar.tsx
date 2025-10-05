@@ -49,7 +49,7 @@ export default function Navbar() {
           border: 'none'
         }}
       >
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" sx={{ padding: '0px !important' }}>
           <Box sx={{ px: { xs: 2, md: 4 }, py: 1, width: '100%' }}>
             <Toolbar
               sx={{

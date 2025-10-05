@@ -2,7 +2,6 @@
 'use client';
 
 import { createTheme } from '@mui/material/styles';
-import { teachers } from './fonts';
 
 // Estendendo o tema do Material-UI para incluir cores customizadas
 declare module '@mui/material/styles' {

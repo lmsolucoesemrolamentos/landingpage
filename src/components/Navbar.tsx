@@ -46,7 +46,7 @@ export default function Navbar() {
         sx={{
           backgroundColor: 'rgba(255, 255, 255, 0.8)',
           backdropFilter: 'blur(200px)',
-          border: 'none'
+          border: 'none !important',
         }}
       >
         <Container maxWidth="xl" sx={{ padding: '0px !important' }}>
@@ -56,7 +56,7 @@ export default function Navbar() {
                 justifyContent: 'space-between',
                 // py: theme.spacing(1),
                 p: '0px !important',
-                border: 'none'
+                border: 'none !important'
               }}
             >
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: 1 }}>

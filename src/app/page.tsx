@@ -40,7 +40,7 @@ export default function Home() {
               zIndex: 0,
             }}>
               <Image
-                src="/images/rolamento_background.png"
+                src="/images/LM/center.webp"
                 alt="Rolamento industrial de alta performance para indústria petrolífera e agronegócio - LM Soluções em Rolamentos"
                 width={2000}
                 height={2000}

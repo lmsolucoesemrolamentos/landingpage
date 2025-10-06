@@ -1,12 +1,14 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import {
   Box,
   TextField,
   InputAdornment,
   IconButton,
   ClickAwayListener,
+  Grow,
+  Fade,
 } from '@mui/material';
 import { Search as SearchIcon, Close as CloseIcon } from '@mui/icons-material';
 
@@ -14,53 +16,115 @@ export default function SearchBar() {
   const [expanded, setExpanded] = useState(false);
   const [value, setValue] = useState('');
   const [canClose, setCanClose] = useState(false);
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const expandTimeRef = useRef<number | null>(null);
+  const animationFrameRef = useRef<number | null>(null);
 
-  const handleExpand = () => {
+  // Função para expandir com animação fluida
+  const handleExpand = useCallback(() => {
+    if (expanded) return;
+
     setExpanded(true);
     setCanClose(false);
-
-    // Marca o tempo de expansão
     expandTimeRef.current = Date.now();
 
-    // Permite fechar após 1 segundo
+    // Usa requestAnimationFrame para animação mais fluida
+    if (animationFrameRef.current) {
+      cancelAnimationFrame(animationFrameRef.current);
+    }
+
+    animationFrameRef.current = requestAnimationFrame(() => {
+      // Foca o input de forma assíncrona para melhor performance
+      setTimeout(() => {
+        if (inputRef.current) {
+          inputRef.current.focus();
+          inputRef.current.setSelectionRange(inputRef.current.value.length, inputRef.current.value.length);
+        }
+      }, 150); // Delay otimizado para sincronizar com a animação
+    });
+
+    // Permite fechar após animação completa
     setTimeout(() => {
       setCanClose(true);
-    }, 1000);
+    }, 500); // Sincronizado com a duração da animação CSS
+  }, [expanded]);
 
-    // Foca o input após um pequeno delay para garantir que funcione no mobile
+  // Função para fechar com animação fluida
+  const handleClose = useCallback(() => {
+    if (!expanded) return;
+
+    setShowSuggestions(false);
+
+    // Pequeno delay para suavizar o fechamento
     setTimeout(() => {
-      if (inputRef.current) {
-        inputRef.current.focus();
-        // No mobile, garante que o cursor apareça
-        inputRef.current.click();
-      }
-    }, 100);
-  };
-
-  const handleClose = () => {
-    setExpanded(false);
-    setValue('');
-    setCanClose(false);
-    expandTimeRef.current = null;
-  };
-
-  const handleClickAway = () => {
-    if (expanded && canClose && !value.trim()) {
       setExpanded(false);
+      setValue('');
       setCanClose(false);
       expandTimeRef.current = null;
-    }
-  };
 
-  // Limpa timers quando o componente é desmontado
+      if (inputRef.current) {
+        inputRef.current.blur();
+      }
+    }, 100);
+  }, [expanded]);
+
+  // Click away otimizado
+  const handleClickAway = useCallback(() => {
+    if (expanded && canClose && !value.trim()) {
+      handleClose();
+    }
+  }, [expanded, canClose, value, handleClose]);
+
+  // Gerenciar hash da URL para #pesquisar
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash === '#pesquisar') {
+        handleExpand();
+        // Remove o hash após expandir para não afetar o histórico
+        window.history.replaceState(null, '', window.location.pathname);
+      }
+    };
+
+    // Verifica hash inicial
+    handleHashChange();
+
+    // Escuta mudanças no hash
+    window.addEventListener('hashchange', handleHashChange);
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, [handleExpand]);
+
+  // Gerenciar sugestões de forma otimizada
+  useEffect(() => {
+    if (expanded && value.trim()) {
+      const timer = setTimeout(() => {
+        setShowSuggestions(true);
+      }, 200);
+      return () => clearTimeout(timer);
+    } else {
+      setShowSuggestions(false);
+    }
+  }, [expanded, value]);
+
+  // Limpa timers e animações quando desmonta
   useEffect(() => {
     return () => {
       if (expandTimeRef.current) {
         expandTimeRef.current = null;
       }
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
     };
+  }, []);
+
+  // Handler de mudança de valor otimizado
+  const handleValueChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
   }, []);
 
   return (
@@ -124,19 +188,49 @@ export default function SearchBar() {
                 </InputAdornment>
               ) : null,
             }}
-            sx={{
+            sx={(t) => ({
               cursor: expanded ? 'text' : 'pointer',
               '& .MuiOutlinedInput-root': {
-                height: 40,               // altura fixa
-                borderRadius: 3,
+                height: 60,
+                borderRadius: 1,
                 backgroundColor: 'background.paper',
                 transition: 'border-color .2s ease',
-                '& fieldset': { borderColor: 'divider' },
-                '&:hover fieldset': { borderColor: 'primary.main' },
-                '&.Mui-focused fieldset': { borderColor: 'primary.main' },
+                '& fieldset': { border: 'none' },
+                // '&:hover fieldset': { borderColor: 'primary.main' },
+                // '&.Mui-focused fieldset': { borderColor: 'primary.main' },
               },
-              '& .MuiInputBase-input': { py: 0 }, // sem “pulo” vertical
-            }}
+
+              /* Texto digitado com as mesmas props do Typography variant="subtitle2" */
+              '& .MuiInputBase-input': {
+                ...t.typography.subtitle2,
+                paddingTop: 0,
+                paddingBottom: 0,
+              },
+
+              /* Placeholder também com subtitle2 (opcional) */
+              '& .MuiInputBase-input::placeholder': {
+                ...t.typography.subtitle2,
+                opacity: 0.6,
+              },
+
+              /* Label do TextField com subtitle2 (se estiver usando label) */
+              '& .MuiInputLabel-root': {
+                ...t.typography.subtitle2,
+              },
+            })}
+          // sx={{
+          //   cursor: expanded ? 'text' : 'pointer',
+          //   '& .MuiOutlinedInput-root': {
+          //     height: 40,               // altura fixa
+          //     borderRadius: 3,
+          //     backgroundColor: 'background.paper',
+          //     transition: 'border-color .2s ease',
+          //     '& fieldset': { borderColor: 'divider' },
+          //     '&:hover fieldset': { borderColor: 'primary.main' },
+          //     '&.Mui-focused fieldset': { borderColor: 'primary.main' },
+          //   },
+          //   '& .MuiInputBase-input': { py: 0 }, // sem “pulo” vertical
+          // }}
           />
 
           {/* sugestões opcionais (empurram o layout normalmente) */}

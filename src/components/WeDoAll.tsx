@@ -16,7 +16,7 @@ export default function WeDoAllSection() {
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
-        backgroundImage: 'url(/images/industrymetal.png)',
+        backgroundImage: 'url(/images/LM/industria_bg.webp)',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',

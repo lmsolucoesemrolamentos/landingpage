@@ -20,6 +20,38 @@ export default function CustomProjectSection() {
       }}
     >
 
+
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '-50%',
+          left: '-50%',
+          transform: 'translate(50%, 25%)',
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Box sx={{ width: '100%', height: '100%', position: 'relative' }}>
+          {/* Ajuste o src depois */}
+          <img
+            src="/images/LM/rolamentos_skecth.webp"
+            alt="Background"
+            style={{
+              objectFit: 'cover',
+              width: '150%',
+              height: '150%',
+              opacity: 0.5,
+              position: 'absolute',
+              top: 0,
+              left: 0,
+            }}
+          />
+        </Box>
+      </Box>
+
       {/* Content */}
       <Box
         sx={{

@@ -11,6 +11,7 @@ interface BearingTag {
 }
 
 interface BearingItem {
+  id: string;
   imgSrc: string;
   title: string;
   description: string;
@@ -147,22 +148,28 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
     // Chama a função original de seleção
     onSelectBearing(index);
 
-    // Remove querystring se existir (para limpar estado)
-    const url = new URL(window.location.href);
-    if (url.searchParams.has('bearing')) {
-      url.searchParams.delete('bearing');
-      window.history.replaceState({}, '', url.toString());
-    }
+    // Adiciona hash na URL com o id do rolamento
+    setTimeout(() => {
+      const bearingId = bearingData[index].id;
+      window.location.hash = bearingId;
+    }, 500); // Delay para esperar a rolagem
 
-    // Detecta se é mobile ou desktop e faz scroll apropriado
-    const isMobile = window.innerWidth < 768;
-    const scrollDistance = isMobile ? 400 : 500;
+    // // Remove querystring se existir (para limpar estado)
+    // const url = new URL(window.location.href);
+    // if (url.searchParams.has('bearing')) {
+    //   url.searchParams.delete('bearing');
+    //   window.history.replaceState({}, '', url.toString());
+    // }
 
-    // Faz scroll suave para baixo
-    window.scrollBy({
-      top: scrollDistance,
-      behavior: 'smooth'
-    });
+    // // Detecta se é mobile ou desktop e faz scroll apropriado
+    // const isMobile = window.innerWidth < 768;
+    // const scrollDistance = isMobile ? 400 : 500;
+
+    // // Faz scroll suave para baixo
+    // window.scrollBy({
+    //   top: scrollDistance,
+    //   behavior: 'smooth'
+    // });
   };
 
   // Renderiza todos os items inicialmente para SEO, depois aplica filtro visual
@@ -174,7 +181,7 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
         display: 'flex',
         flexDirection: 'column',
         gap: { xs: 2, md: 4 },
-        py: { xs: 2, md: 4 },
+        py: { xs: 4, md: 4 },
         width: '100%',
       }}
     >

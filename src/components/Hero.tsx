@@ -81,14 +81,26 @@ const Hero = () => {
 
         <Grid container spacing={{ xs: 2, sm: 10 }} sx={{ width: '100%' }}>
           <Grid size={{ xs: 3, sm: 6 }}>
-            <Image
-              src="/images/LM_logo2.svg"
-              alt="LM Soluções em Rolamentos - Logo"
-              width={40}
-              height={40}
-              priority
-              style={{ borderRadius: 4 }}
-            />
+            <Box sx={{ display: { xs: 'flex', sm: 'none' }, alignItems: 'center', justifyContent: 'flex-start' }}>
+              <Image
+                src="/images/LM_logo2.svg"
+                alt="LM Soluções em Rolamentos - Logo"
+                width={40}
+                height={40}
+                priority
+                style={{ borderRadius: 4 }}
+              />
+            </Box>
+            <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center', justifyContent: 'flex-start' }}>
+              <Image
+                src="/images/LM_logo2.svg"
+                alt="LM Soluções em Rolamentos - Logo"
+                width={60}
+                height={60}
+                priority
+                style={{ borderRadius: 4 }}
+              />
+            </Box>
           </Grid>
 
           <Grid size={{ xs: 9, sm: 6 }} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>

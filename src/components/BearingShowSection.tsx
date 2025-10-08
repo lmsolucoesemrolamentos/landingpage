@@ -12,6 +12,7 @@ interface BearingTag {
 }
 
 interface BearingItem {
+  id: string;
   imgSrc: string;
   title: string;
   description: string;
@@ -21,6 +22,7 @@ interface BearingItem {
 
 const bearingData: BearingItem[] = [
   {
+    id: 'rolamento-axial-de-rolos',
     imgSrc: '/images/LM/rolamentos/axial-rolos.webp',
     title: 'ROLAMENTO AXIAL DE ROLOS',
     description: 'Elemento de máquina destinado a suportar cargas axiais elevadas em uma única direção. Utiliza corpos rolantes em forma de cilindros (roletes) dispostos entre pistas planas ou ligeiramente côncavas, garantindo contato linear e maior capacidade de carga em comparação aos rolamentos axiais de esferas.',
@@ -31,6 +33,7 @@ const bearingData: BearingItem[] = [
     ],
   },
   {
+    id: 'rolamento-autocompensador-de-rolos',
     imgSrc: '/images/LM/rolamentos/autocompensador-rolos.webp',
     title: 'ROLAMENTO AUTOCOMPENSADOR DE ROLOS',
     description: 'Rolamento projetado para suportar cargas elevadas e se ajustar automaticamente a desalinhamentos entre o eixo e o mancal. Ele é composto por dois anéis, gaiola e rolos em formato de barril, distribuídos simetricamente, o que permite que suporte tanto cargas radiais pesadas quanto cargas axiais moderadas em ambas as direções.',
@@ -40,6 +43,7 @@ const bearingData: BearingItem[] = [
     ],
   },
   {
+    id: 'rolamento-autocompensador-de-esferas',
     imgSrc: '/images/LM/rolamentos/autocompensador-esferas.webp',
     title: 'ROLAMENTO AUTOCOMPENSADOR DE ESFERAS',
     description: 'Esse tipo de rolamento possui duas fileiras de esferas guiadas por uma pista esférica no anel externo. Essa geometria permite que ele compense automaticamente desalinhamentos angulares, tornando-o muito eficiente em situações onde o eixo pode estar ligeiramente torto ou desalinhado em relação ao mancal.',
@@ -49,6 +53,7 @@ const bearingData: BearingItem[] = [
     ],
   },
   {
+    id: 'rolamento-axial-de-esferas',
     imgSrc: '/images/LM/rolamentos/axial-esferas.webp',
     title: 'ROLAMENTO AXIAL DE ESFERAS',
     description: 'Rolamento projetado especificamente para suportar cargas axiais (na direção do eixo), sem ser adequado para cargas radiais significativas.',
@@ -58,6 +63,7 @@ const bearingData: BearingItem[] = [
     ],
   },
   {
+    id: 'rotulas',
     imgSrc: '/images/LM/rolamentos/rotulas.webp',
     title: 'RÓTULAS',
     description: 'As rótulas são tipos especiais de rolamentos que permitem movimento angular entre duas partes, funcionando como uma junta esférica. Elas são usadas em situações em que há necessidade de transmitir força e ao mesmo tempo permitir deslocamentos angulares, acomodando desalinhamentos e vibrações.',
@@ -67,6 +73,7 @@ const bearingData: BearingItem[] = [
     ],
   },
   {
+    id: 'rolamento-de-giro-engrenado-externo',
     imgSrc: '/images/LM/rolamentos/giro_engrenado_externo.webp',
     title: 'ROLAMENTO DE GIRO ENGRENADO EXTERNO',
     description: 'Rolamento de grande diâmetro (rolamento de giro ou slewing bearing) que possui dentes de engrenagem na face externa do anel.Isso permite que o giro seja feito por meio do acoplamento direto de um pinhão ao anel externo, transmitindo torque de forma eficiente sem precisar de engrenagens adicionais.',
@@ -76,6 +83,7 @@ const bearingData: BearingItem[] = [
     ],
   },
   {
+    id: 'rolamento-de-giro-engrenado-interno',
     imgSrc: '/images/LM/rolamentos/giro_engrenado_interno.webp',
     title: 'ROLAMENTO DE GIRO ENGRENADO INTERNO',
     description: 'É um tipo de rolamento de giro de grande porte, projetado para suportar cargas combinadas (axiais, radiais e momentos de tombamento).ele possui dentes de engrenagem usinados na pista interna, permitindo que um pinhão se acople por dentro, transmitindo o torque.'
@@ -85,6 +93,7 @@ const bearingData: BearingItem[] = [
     ],
   },
   {
+    id: 'rolamento-conico',
     imgSrc: '/images/LM/rolamentos/conico.webp',
     title: 'ROLAMENTO CÔNICO',
     description: 'formado por roletes em formato de cone que trabalham entre pistas também cônicas. Essa geometria faz com que ele suporte cargas combinadas (radiais e axiais) de forma eficiente.',
@@ -120,26 +129,22 @@ export default function BearingShowSection() {
         ))}
       </Box>
 
-      <BearingShowCard
-        bearingData={bearingData}
-        selectedIndex={selectedBearingIndex}
-        onSelectBearing={handleSelectBearing}
-      />
+
 
       {/* Interface visível - mostra apenas o selecionado */}
-      <Container maxWidth="xl" sx={{ padding: '0px !important' }}>
-        <Grid container spacing={4} sx={{ borderRadius: 2, mx: { xs: 2, md: 4 } }}>
-          <Grid size={{ xs: 12, md: 6 }}>
+      <Container maxWidth="xl" sx={{ padding: '0px !important' }} id={bearingData[selectedBearingIndex].id}>
+        <Grid container spacing={{ xs: 0, md: 4 }} sx={{ borderRadius: 2, mx: { xs: 2, md: 4 } }}>
+          <Grid size={{ xs: 12, md: 6 }} sx={{ p: { xs: 4, sm: 8 }, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <Image
               src={bearingData[selectedBearingIndex].imgSrc}
               alt={bearingData[selectedBearingIndex].title}
               layout="responsive"
-              width={500}
-              height={300}
+              width={200}
+              height={200}
             />
           </Grid>
           <Grid size={{ xs: 12, md: 6 }} sx={{ p: { xs: 2, md: 4 } }}>
-            <Box sx={{ height: '100%', display: "flex", flexDirection: "column", justifyContent: 'space-between', alignItems: 'start', gap: 2 }}>
+            <Box sx={{ height: '100%', display: "flex", flexDirection: "column", justifyContent: 'center', alignItems: 'start', gap: 2 }}>
               <Box>
                 <Typography variant="h6" className='gradient-text'>
                   {bearingData[selectedBearingIndex].title.toUpperCase()}
@@ -186,6 +191,11 @@ export default function BearingShowSection() {
         </Grid>
       </Container>
 
+      <BearingShowCard
+        bearingData={bearingData}
+        selectedIndex={selectedBearingIndex}
+        onSelectBearing={handleSelectBearing}
+      />
 
     </Box>
   );

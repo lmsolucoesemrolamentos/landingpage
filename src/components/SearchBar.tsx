@@ -62,7 +62,7 @@ export default function SearchBar() {
         sx={(t) => ({
           cursor: 'pointer',
           '& .MuiOutlinedInput-root': {
-            height: 60,
+            height: { xs: 40, sm: 60 },
             borderRadius: 1,
             backgroundColor: 'background.paper',
             transition: 'border-color .2s ease',

@@ -402,8 +402,8 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
               <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', p: 1, pb: '8px !important' }}>
                 {/* Tags */}
                 <Box sx={{ display: 'flex', flexWrap: 'nowrap', gap: 0, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <Box>
-                    {item.highlight && (
+                  {item.highlight && (
+                    <Box>
                       <Chip
                         label="Mais buscados"
                         size="small"
@@ -417,8 +417,8 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
                           },
                         }}
                       />
-                    )}
-                  </Box>
+                    </Box>
+                  )}
                   <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 0 }}>
                     {item.tags.map((tag, tagIndex) => (
                       <i className={tag.icon} key={tagIndex} style={{ fontSize: '20px', color: '#A9ADBE' }}></i>

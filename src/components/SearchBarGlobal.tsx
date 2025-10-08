@@ -16,7 +16,7 @@ import {
 import { Search as SearchIcon, Close as CloseIcon, ChevronLeft, ChevronRight } from '@mui/icons-material';
 import Image from 'next/image';
 import { useSearch } from '../contexts/SearchContext';
-import { searchBearings, BearingItem } from '../data/bearingData';
+import { searchBearings, BearingItem, bearingData } from '../data/bearingData';
 import { ctaButtonStyle } from '@/styles/globalStyles';
 
 export default function SearchBarGlobal() {
@@ -292,16 +292,20 @@ export default function SearchBarGlobal() {
                         closeSearch();
 
                         // Adiciona querystring com o índice do rolamento selecionado
+                        setTimeout(() => {
+                          const bearingId = bearingData[index].id;
+                          window.location.hash = bearingId;
+                        }, 500); // Delay para esperar a rolagem
                         const url = new URL(window.location.href);
                         url.searchParams.set('bearing', index.toString());
                         window.history.pushState({}, '', url.toString());
 
-                        setTimeout(() => {
-                          const element = document.querySelector('#rolamentos');
-                          if (element) {
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                          }
-                        }, 200);
+                        // setTimeout(() => {
+                        //   const element = document.querySelector('#rolamentos');
+                        //   if (element) {
+                        //     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        //   }
+                        // }, 200);
                       }}
                     >
                       {/* Imagem do rolamento */}

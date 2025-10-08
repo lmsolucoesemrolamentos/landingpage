@@ -14,10 +14,10 @@ const footerNavItems = [
 ];
 
 const socialLinks = [
-  { icon: 'ri-whatsapp-line', href: 'https://wa.me/5511945451000', label: 'WhatsApp' },
-  { icon: 'ri-instagram-line', href: 'https://instagram.com/lmsolucoes', label: 'Instagram' },
-  { icon: 'ri-linkedin-line', href: 'https://linkedin.com/company/lmsolucoes', label: 'LinkedIn' },
-  { icon: 'ri-phone-line', href: 'tel:+5511945451000', label: 'Fale conosco' },
+  { icon: 'ri-whatsapp-line', href: 'https://wa.me/5511949820295', label: 'WhatsApp' },
+  { icon: 'ri-instagram-line', href: 'https://instagram.com/', label: 'Instagram' },
+  { icon: 'ri-linkedin-line', href: 'https://linkedin.com/company/LM-soluções-em-rolamentos', label: 'LinkedIn' },
+  { icon: 'ri-phone-line', href: 'tel:+5511949820295', label: 'Fale conosco' },
 ];
 
 export default function Footer() {

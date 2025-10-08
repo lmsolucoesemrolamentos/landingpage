@@ -91,18 +91,11 @@ export default function Home() {
               alignItems: 'center',
               gap: { xs: 3, md: 4 },
               position: 'relative',
-              overflow: 'clip',        // melhor que hidden para clipping puro (fallback abaixo)
-              clipPath: 'inset(0)',    // garante corte visual mesmo em engines birrentas
-              contain: 'paint',        // isola pintura
-              isolation: 'isolate',    //
+              overflow: 'clip',
+              clipPath: 'inset(0)',
+              contain: 'paint',
+              isolation: 'isolate',
             }}>
-
-              {/* <Box sx={{
-                minHeight: '100%',
-                width: '100%',
-                overflow: 'hidden',
-                position: 'relative',
-              }}> */}
 
               {/* imagem de efeito de cor */}
               <Box sx={{
@@ -175,8 +168,7 @@ export default function Home() {
                 />
               </Box>
 
-              {/* </Box> */}
-
+              {/* Seções */}
               <ServicesSection />
               <BearingsSection />
               <NotFoundSection />

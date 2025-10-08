@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fcfdfe;
+  --background: linear-gradient(180deg, #F2F6FF 0%, #FFFFFF 100%);
   --foreground: #5D606E;
   --primary: #324592;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #fcfdfe;
     --foreground: #5D606E;
   }
-}
+} */
 
 * {
   font-family: var(--font-teachers), 'Teachers', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;

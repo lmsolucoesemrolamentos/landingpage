@@ -10,14 +10,13 @@ const footerNavItems = [
   { label: 'Rolamentos', href: '#rolamentos' },
   { label: 'Manutenção', href: '#manutencao' },
   { label: 'Quem somos', href: '#quem-somos' },
-  { label: 'Fale conosco', href: '#contato' },
 ];
 
 const socialLinks = [
-  { icon: 'ri-whatsapp-line', href: 'https://wa.me/5511949820295', label: 'WhatsApp' },
+  { icon: 'ri-chat-1-line', href: 'https://wa.me/5511949820295', label: 'Fale conosco' },
   { icon: 'ri-instagram-line', href: 'https://instagram.com/', label: 'Instagram' },
   { icon: 'ri-linkedin-line', href: 'https://linkedin.com/company/LM-soluções-em-rolamentos', label: 'LinkedIn' },
-  { icon: 'ri-phone-line', href: 'tel:+5511949820295', label: 'Fale conosco' },
+  // { icon: 'ri-phone-line', href: 'tel:+5511949820295', label: 'Fale conosco' },
 ];
 
 export default function Footer() {
@@ -265,17 +264,23 @@ export default function Footer() {
 
               {/* Links de navegação - Mobile */}
               <Box sx={{ mb: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
-                {['Diferencial', 'Serviços', 'Rolamentos', 'Quem somos', 'Fale conosco'].map((item) => (
-                  <Typography
-                    key={item}
-                    variant="body2"
-                    sx={{
-                      color: 'text.primary',
-                      mb: 1,
-                    }}
+                {footerNavItems.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    style={{ textDecoration: 'none' }}
                   >
-                    {item}
-                  </Typography>
+                    <Typography
+                      key={item.label}
+                      variant="body2"
+                      sx={{
+                        color: 'text.primary',
+                        mb: 1,
+                      }}
+                    >
+                      {item.label}
+                    </Typography>
+                  </Link>
                 ))}
               </Box>
             </Box>

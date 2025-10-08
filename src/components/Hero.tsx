@@ -257,7 +257,7 @@ const Hero = () => {
                 </Button>
               </Grid>
               <Grid size={2} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <i className='ri-whatsapp-line' style={{ fontSize: 40, color: '#FF8800' }}></i>
+                <i className='ri-chat-1-line' style={{ fontSize: 40, color: '#FF8800' }}></i>
               </Grid>
 
 

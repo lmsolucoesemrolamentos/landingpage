@@ -71,16 +71,16 @@ export default function MaintenanceSection() {
             </Box>
 
 
-            <Typography
+            {/* <Typography
               variant="subtitle1"
               sx={{ maxWidth: { xs: '100%', md: '60%' } }}
             >
               A repotencialização/manutenção de rolamentos pode ser a solução ideal para aqueles que precisam de rapidez e economia.
-            </Typography>
+            </Typography> */}
           </Box>
 
           {/* Bearing show Cards */}
-          <Grid container spacing={2}>
+          <Grid container spacing={4} pt={2}>
 
             <Grid size={{ xs: 12, md: 4 }}>
               <Box

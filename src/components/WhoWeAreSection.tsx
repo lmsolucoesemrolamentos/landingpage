@@ -37,7 +37,7 @@ export default function WhoWeAreSection() {
 
 
                 <Typography variant="h3" className="gradient-text" mb={2}>
-                  PORQUE VOCE DEVERIA DEIXAR O SEU PROJETO EM NOSSAS MÃOS?
+                  POR QUE VOCÊ DEVERIA DEIXAR O SEU PROJETO EM NOSSAS MÃOS?
                 </Typography>
 
 

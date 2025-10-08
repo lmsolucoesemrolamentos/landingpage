@@ -87,11 +87,11 @@ const bearingData: BearingItem[] = [
   {
     imgSrc: '/images/LM/rolamentos/conico.webp',
     title: 'ROLAMENTO CÔNICO',
-    description: 'formado por roletes em formato de cone que trabalham entre pistas também cônicas.  Essa geometria faz com que ele suporte cargas combinadas (radiais e axiais) de forma eficiente.',
+    description: 'formado por roletes em formato de cone que trabalham entre pistas também cônicas. Essa geometria faz com que ele suporte cargas combinadas (radiais e axiais) de forma eficiente.',
     tags: [
       { icon: "ri-weight-line", title: 'Altas cargas' },
-  { icon: "ri-equalizer-2-line", title: 'Versátil' },
-],
+      { icon: "ri-equalizer-2-line", title: 'Versátil' },
+    ],
   },
 ];
 
@@ -171,7 +171,13 @@ export default function BearingShowSection() {
                     </>
                   ))}
                 </Box>
-                <Button sx={{ ...ctaButtonStyle }}>
+                <Button
+                  href={`https://wa.me/5511949820295?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20or%C3%A7amento%20para%20o%20${encodeURIComponent(bearingData[selectedBearingIndex].title.toLowerCase())}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{ ...ctaButtonStyle }}
+                  component="a"
+                >
                   Solicitar orçamento
                 </Button>
               </Box>

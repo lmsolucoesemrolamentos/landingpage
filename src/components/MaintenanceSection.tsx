@@ -154,7 +154,13 @@ export default function MaintenanceSection() {
             alignItems: 'center',
             p: 8
           }}>
-            <Button sx={{ ...ctaButtonStyle }}>
+            <Button
+              sx={{ ...ctaButtonStyle }}
+              component="a"
+              href="https://wa.me/5511949820295?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20fazer%20uma%20avalia%C3%A7%C3%A3o%20t%C3%A9cnica"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Fazer Avaliação Técnica
             </Button>
           </Box>

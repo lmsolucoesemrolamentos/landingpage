@@ -42,7 +42,13 @@ export default function WeDoAllSection() {
         </Typography>
 
 
-        <Button sx={{ ...ctaButtonStyle }}>
+        <Button
+          sx={{ ...ctaButtonStyle }}
+          component="a"
+          href="https://wa.me/5511949820295?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20sobre%20suas%20solu%C3%A7%C3%B5es%20personalizadas"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Falar Com Especialista
         </Button>
 

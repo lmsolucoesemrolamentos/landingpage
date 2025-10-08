@@ -92,76 +92,84 @@ export default function Home() {
               gap: { xs: 3, md: 4 }
             }}>
 
+              <Box sx={{
+                minHeight: '100%',
+                width: '100%',
+                overflow: 'hidden',
+                position: 'relative',
+              }}>
 
-              {/* imagem de efeito de cor */}
-              <Box sx={{
-                position: "absolute",
-                top: { xs: '11%', md: '8%' },
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                zIndex: 0,
-              }}>
-                <Image
-                  src="/images/LM/multicolor.svg"
-                  alt='efeito de cor - LM Soluções em Rolamentos'
-                  width={2000}
-                  height={2000}
-                  priority
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
-                  style={{
-                    opacity: 0.8,
-                    width: '100%',
-                    height: 'auto',
-                    maxWidth: '2000px',
-                  }}
-                />
-              </Box>
-              <Box sx={{
-                position: "absolute",
-                top: { xs: '45%', md: '40%' },
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                zIndex: 0,
-              }}>
-                <Image
-                  src="/images/LM/multicolor.svg"
-                  alt='efeito de cor - LM Soluções em Rolamentos'
-                  width={2000}
-                  height={2000}
-                  priority
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
-                  style={{
-                    opacity: 0.8,
-                    width: '100%',
-                    height: 'auto',
-                    maxWidth: '2000px',
-                  }}
-                />
-              </Box>
-              <Box sx={{
-                position: "absolute",
-                bottom: { xs: '1%', md: '-3%' },
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                zIndex: 0,
-              }}>
-                <Image
-                  src="/images/LM/multicolor.svg"
-                  alt='efeito de cor - LM Soluções em Rolamentos'
-                  width={2000}
-                  height={2000}
-                  priority
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
-                  style={{
-                    opacity: 0.8,
-                    width: '100%',
-                    height: 'auto',
-                    maxWidth: '2000px',
-                  }}
-                />
+                {/* imagem de efeito de cor */}
+                <Box sx={{
+                  position: "absolute",
+                  top: { xs: '11%', md: '8%' },
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  zIndex: 0,
+                }}>
+                  <Image
+                    src="/images/LM/multicolor.svg"
+                    alt='efeito de cor - LM Soluções em Rolamentos'
+                    width={2000}
+                    height={2000}
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+                    style={{
+                      opacity: 0.8,
+                      width: '100%',
+                      height: 'auto',
+                      maxWidth: '2000px',
+                    }}
+                  />
+                </Box>
+                <Box sx={{
+                  position: "absolute",
+                  top: { xs: '45%', md: '40%' },
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  zIndex: 0,
+                }}>
+                  <Image
+                    src="/images/LM/multicolor.svg"
+                    alt='efeito de cor - LM Soluções em Rolamentos'
+                    width={2000}
+                    height={2000}
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+                    style={{
+                      opacity: 0.8,
+                      width: '100%',
+                      height: 'auto',
+                      maxWidth: '2000px',
+                    }}
+                  />
+                </Box>
+                <Box sx={{
+                  position: "absolute",
+                  bottom: { xs: '1%', md: '-3%' },
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  zIndex: 0,
+                }}>
+                  <Image
+                    src="/images/LM/multicolor.svg"
+                    alt='efeito de cor - LM Soluções em Rolamentos'
+                    width={2000}
+                    height={2000}
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+                    style={{
+                      opacity: 0.8,
+                      width: '100%',
+                      height: 'auto',
+                      maxWidth: '2000px',
+                    }}
+                  />
+                </Box>
+
               </Box>
 
               <ServicesSection />

@@ -74,7 +74,13 @@ export default function CustomProjectSection() {
         </Typography>
 
 
-        <Button sx={{ ...ctaButtonStyle }}>
+        <Button
+          sx={{ ...ctaButtonStyle }}
+          component="a"
+          href="https://wa.me/5511949820295?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20projeto%20personalizado"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Solicitar Projeto Personalizado
         </Button>
 

@@ -233,7 +233,16 @@ const Hero = () => {
 
             <Grid container spacing={2} sx={{ width: '100%', mt: 2, display: { xs: 'none', sm: 'flex' } }}>
               <Grid size={10}>
-                <Button fullWidth sx={{ ...ctaButtonStyle }} >Falar Com Especialista</Button>
+                <Button
+                  fullWidth
+                  sx={{ ...ctaButtonStyle }}
+                  component="a"
+                  href="https://wa.me/5511949820295?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20um%20especialista%20sobre%20rolamentos"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Falar Com Especialista
+                </Button>
               </Grid>
               <Grid size={2} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <i className='ri-whatsapp-line' style={{ fontSize: 40, color: '#FF8800' }}></i>

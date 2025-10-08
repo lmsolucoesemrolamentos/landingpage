@@ -44,7 +44,7 @@ export default function SearchBar() {
       <TextField
         fullWidth
         onClick={openSearch}
-        onFocus={openSearch}
+        // onFocus={openSearch}
         placeholder="Pesquise por serviços, rolamentos, soluções..."
         variant="outlined"
         size="small"

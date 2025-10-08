@@ -41,7 +41,13 @@ export default function NotFoundSection() {
         </Typography>
 
 
-        <Button sx={{ ...ctaButtonStyle }}>
+        <Button
+          sx={{ ...ctaButtonStyle }}
+          component="a"
+          href="https://wa.me/5511949820295?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20n%C3%A3o%20encontrei%20o%20que%20procurava%2C%20gostaria%20de%20ajuda"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Falar Com Especialista
         </Button>
 

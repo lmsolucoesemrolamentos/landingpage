@@ -33,45 +33,45 @@ export default function WhoWeAreSection() {
             <Grid container spacing={2}>
               <Grid size={{ xs: 12, md: 6 }}>
 
+                <Box sx={{
+                  maxWidth: { xs: '100%', md: '600px' },
+                }}>
+                  <Typography variant="h3" className="gradient-text" mb={2}>
+                    POR QUE VOCÊ DEVERIA DEIXAR O SEU PROJETO EM NOSSAS MÃOS?
+                  </Typography>
 
+                  <Typography
+                    variant="subtitle1"
+                    mb={2}
+                  >
+                    Mais do que produtos, entregamos <b>confiança e performance.</b>
+                  </Typography>
 
+                  <Typography
+                    variant="subtitle1"
+                    mb={2}
+                  >
+                    Contamos com uma equipe altamente qualificada de engenheiros, técnicos e projetistas, para garantir resultados superiores e atender aos padrões mais rigorosos do mercado em todo o Brasil.
+                  </Typography>
 
-                <Typography variant="h3" className="gradient-text" mb={2}>
-                  POR QUE VOCÊ DEVERIA DEIXAR O SEU PROJETO EM NOSSAS MÃOS?
-                </Typography>
+                  <Typography
+                    variant="subtitle1"
+                    mb={2}
+                  >
+                    Nosso compromisso é gerar eficiência, agilidade e segurança operacional.
+                  </Typography>
 
-
-                <Typography
-                  variant="subtitle1"
-                  mb={2}
-                >
-                  Mais do que produtos, entregamos <b>confiança e performance.</b>
-                </Typography>
-                <Typography
-                  variant="subtitle1"
-                  mb={2}
-                >
-                  Contamos com uma equipe altamente qualificada de engenheiros, técnicos e projetistas, para garantir resultados superiores e atender aos padrões mais rigorosos do mercado em todo o Brasil.
-                </Typography>
-                <Typography
-                  variant="subtitle1"
-                  mb={2}
-                >
-                  Nosso compromisso é gerar eficiência, agilidade e segurança operacional.
-                </Typography>
-
-
-                <Typography
-                  variant="subtitle1"
-                  className="gradient-text"
-                  my={4}
-                >
-                  - LUIZ MARCIANO
-                </Typography>
-
-
+                  <Typography
+                    variant="subtitle1"
+                    className="gradient-text"
+                    my={4}
+                  >
+                    - LUIZ MARCIANO
+                  </Typography>
+                </Box>
 
               </Grid>
+
               <Grid size={{ xs: 0, md: 6 }}>
                 <Box
                   sx={{

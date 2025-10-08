@@ -5,6 +5,8 @@ import 'remixicon/fonts/remixicon.css';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import theme from '../theme';
 import { teachers } from '../fonts';
+import { SearchProvider } from '../contexts/SearchContext';
+import SearchBarGlobal from '../components/SearchBarGlobal';
 
 export const metadata: Metadata = {
   title: "LM Soluções em Rolamentos | Indústria Petrolífera e Agronegócio",
@@ -93,7 +95,7 @@ export default function RootLayout({
               "logo": "https://lmsolucoes.com.br/images/LM_logo1.svg",
               "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+55-11-99999-9999",
+                "telephone": "+55-11-94545-1000",
                 "contactType": "customer service",
                 "availableLanguage": "Portuguese"
               },
@@ -136,7 +138,10 @@ export default function RootLayout({
       <body className={teachers.className}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          {children}
+          <SearchProvider>
+            <SearchBarGlobal />
+            {children}
+          </SearchProvider>
         </ThemeProvider>
       </body>
     </html>

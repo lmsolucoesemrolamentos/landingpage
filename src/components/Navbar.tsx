@@ -11,6 +11,7 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 import { ctaButtonStyle } from '@/styles/globalStyles';
+import { useSearch } from '../contexts/SearchContext';
 
 const navItems = [
   { label: 'Sob demanda', href: '#sob-demanda' },
@@ -21,6 +22,8 @@ const navItems = [
 ];
 
 export default function Navbar() {
+  const { openSearch } = useSearch();
+
   // Função para fechar o menu mobile
   const closeMobileMenu = () => {
     const checkbox = document.getElementById('mobile-menu-toggle') as HTMLInputElement;
@@ -157,8 +160,7 @@ export default function Navbar() {
 
                 <Button
                   variant="contained"
-                  component={Link}
-                  href="#pesquisar"
+                  onClick={openSearch}
                   sx={{
                     backgroundColor: 'background.default',
                     color: 'primary.main',

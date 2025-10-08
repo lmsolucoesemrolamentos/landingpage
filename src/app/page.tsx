@@ -86,7 +86,7 @@ export default function Home() {
               }}>
                 <Image
                   src="/images/LM/multicolor.svg"
-                  alt="Rolamento industrial de alta performance para indústria petrolífera e agronegócio - LM Soluções em Rolamentos"
+                  alt='efeito de cor - LM Soluções em Rolamentos'
                   width={2000}
                   height={2000}
                   priority
@@ -109,7 +109,7 @@ export default function Home() {
               }}>
                 <Image
                   src="/images/LM/multicolor.svg"
-                  alt="Rolamento industrial de alta performance para indústria petrolífera e agronegócio - LM Soluções em Rolamentos"
+                  alt='efeito de cor - LM Soluções em Rolamentos'
                   width={2000}
                   height={2000}
                   priority
@@ -132,7 +132,7 @@ export default function Home() {
               }}>
                 <Image
                   src="/images/LM/multicolor.svg"
-                  alt="Rolamento industrial de alta performance para indústria petrolífera e agronegócio - LM Soluções em Rolamentos"
+                  alt='efeito de cor - LM Soluções em Rolamentos'
                   width={2000}
                   height={2000}
                   priority

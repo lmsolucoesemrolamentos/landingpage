@@ -14,10 +14,10 @@ const footerNavItems = [
 ];
 
 const socialLinks = [
-  { icon: 'ri-whatsapp-line', href: 'https://wa.me/5511999999999', label: 'WhatsApp' },
+  { icon: 'ri-whatsapp-line', href: 'https://wa.me/5511945451000', label: 'WhatsApp' },
   { icon: 'ri-instagram-line', href: 'https://instagram.com/lmsolucoes', label: 'Instagram' },
   { icon: 'ri-linkedin-line', href: 'https://linkedin.com/company/lmsolucoes', label: 'LinkedIn' },
-  { icon: 'ri-phone-line', href: 'tel:+5511999999999', label: 'Fale conosco' },
+  { icon: 'ri-phone-line', href: 'tel:+5511945451000', label: 'Fale conosco' },
 ];
 
 export default function Footer() {

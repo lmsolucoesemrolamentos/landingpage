@@ -7,7 +7,7 @@ import Link from "next/link"
 import { ctaButtonStyle } from "@/styles/globalStyles"
 
 // Número do WhatsApp para contato
-const WHATSAPP_NUMBER = "5511999999999"
+const WHATSAPP_NUMBER = "5511945451000"
 
 const services = [
   {

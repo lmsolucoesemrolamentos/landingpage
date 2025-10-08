@@ -34,17 +34,17 @@ export default function Footer() {
       <Box
         sx={{
           position: 'absolute',
-          bottom: '-50%',
+          bottom: { xs: '0%', md: '-50%' },
           right: '50%',
           transform: 'translateX(50%)',
           width: '120%',
           height: '120%',
-          opacity: 0.1,
+          opacity: 0.5,
           zIndex: 0,
         }}
       >
         <Image
-          src="/images/rolamento_background.png"
+          src="/images/LM/rolamentos_skecth.webp"
           alt=""
           fill
           style={{

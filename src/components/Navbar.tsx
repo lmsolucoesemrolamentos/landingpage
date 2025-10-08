@@ -137,7 +137,8 @@ export default function Navbar() {
                 <Button
                   variant="contained"
                   component={Link}
-                  href="#contato"
+                  href="https://wa.me/5511949820295?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20um%20especialista%20sobre%20rolamentos"
+                  target='_blank'
                   sx={{
                     backgroundColor: 'primary.main',
                     color: 'common.white',
@@ -153,6 +154,10 @@ export default function Navbar() {
                     textTransform: 'none',
                     fontSize: { xs: '1.2rem', md: '1.2rem' },
                     boxShadow: 0,
+                    '&:hover': {
+                      boxShadow: 0,
+                      transform: 'scale(1.05)',
+                    }
                   }}
                 >
                   <i className="ri-chat-1-line"></i>
@@ -176,6 +181,10 @@ export default function Navbar() {
                     textTransform: 'none',
                     fontSize: { xs: '1.2rem', md: '1.2rem' },
                     boxShadow: 0,
+                    '&:hover': {
+                      boxShadow: 0,
+                      transform: 'scale(1.05)',
+                    }
                   }}
                 >
                   <i className="ri-search-line" ></i>

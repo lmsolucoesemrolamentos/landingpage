@@ -67,10 +67,12 @@ export default function BearingsSection() {
               Rolamentos padrões de <b>alta qualidade e eficiência,</b> dos distribuidores mais qualificados do mercado.
             </Typography>
           </Box>
-        </Container>
 
-        {/* Bearing show Cards */}
-        <BearingShowSection />
+
+          {/* Bearing show Cards */}
+          <BearingShowSection />
+
+        </Container>
 
       </Box>
     </Box>

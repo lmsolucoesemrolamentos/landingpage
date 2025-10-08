@@ -123,9 +123,9 @@ export default function SearchBarGlobal() {
           right: 0,
           zIndex: t.zIndex.modal + 1,
           width: '100vw',
-          backgroundColor: 'rgba(255, 255, 255, 0.95)',
+          backgroundColor: 'rgba(255, 255, 255, 0.55)',
           backdropFilter: 'blur(10px)',
-          boxShadow: '0 2px 20px rgba(0,0,0,0.1)',
+          boxShadow: '0 0px 20px rgba(30, 31, 41, 0.06)',
           transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
           py: 3,
           px: 3,
@@ -205,7 +205,7 @@ export default function SearchBarGlobal() {
               p: 2,
               backgroundColor: 'white',
               borderRadius: 2,
-              boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+              boxShadow: '0 0px 20px rgba(30, 31, 41, 0.06)',
             }}
           >
             <Box sx={{ fontSize: '0.875rem', color: 'text.secondary', mb: 2 }}>
@@ -246,7 +246,7 @@ export default function SearchBarGlobal() {
                     transform: 'translateY(-50%)',
                     zIndex: 2,
                     backgroundColor: 'white',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                    boxShadow: '0 0px 20px rgba(30, 31, 41, 0.06)',
                     '&:hover': { backgroundColor: 'grey.50' },
                   }}
                 >
@@ -284,7 +284,7 @@ export default function SearchBarGlobal() {
                         border: '2px solid transparent',
                         '&:hover': {
                           transform: 'translateY(-4px)',
-                          boxShadow: '0 8px 25px rgba(0,0,0,0.1)',
+                          boxShadow: '0 0px 20px rgba(30, 31, 41, 0.06)',
                         },
                       }}
                       onClick={() => {

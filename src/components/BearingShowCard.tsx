@@ -180,7 +180,7 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        gap: { xs: 2, md: 4 },
+        gap: { xs: 0, md: 2 },
         py: { xs: 4, md: 4 },
         width: '100%',
       }}
@@ -262,6 +262,7 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
           display: 'flex',
           overflowX: 'auto',
           gap: { xs: 2, md: 4 },
+          pt: { xs: 2, md: 2 },
           // pb: 2,
           px: { xs: 2, md: 4 },
           scrollBehavior: 'smooth',
@@ -311,6 +312,10 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
                 cursor: 'pointer',
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease',
                 border: isSelected ? '2px solid #FF8800' : '2px solid transparent',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: '0 0px 20px rgba(30, 31, 41, 0.06)',
+                },
               }}
             >
               {/* Imagem do rolamento */}

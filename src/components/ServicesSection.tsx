@@ -70,10 +70,12 @@ export default function ServicesSection() {
               Atendemos minusciosamente as necessidades da sua indústria!
             </Typography>
           </Box>
-        </Container>
 
-        {/* Service Cards */}
-        <IndustryServiceCarousel />
+
+          {/* Service Cards */}
+          <IndustryServiceCarousel />
+
+        </Container>
 
       </Box>
     </Box>

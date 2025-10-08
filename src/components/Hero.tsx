@@ -257,7 +257,26 @@ const Hero = () => {
                 </Button>
               </Grid>
               <Grid size={2} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <i className='ri-chat-1-line' style={{ fontSize: 40, color: '#FF8800' }}></i>
+                {/* <i className='ri-chat-1-line' style={{ fontSize: 40, color: '#FF8800' }}></i> */}
+                <Box
+                  sx={{
+                    backgroundColor: 'background.default',
+                    color: 'primary.main',
+                    minHeight: '100%',
+                    aspectRatio: '1 / 1',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    textTransform: 'none',
+                    boxShadow: 0,
+                    // padding: { xs: '16px', md: '24px' },
+                    borderRadius: { xs: '4px', md: '10px' },
+                    fontWeight: 400,
+                    fontSize: { xs: '24px', md: '32px' },
+                  }}
+                >
+                  <i className="ri-chat-1-line" ></i>
+                </Box>
               </Grid>
 
 

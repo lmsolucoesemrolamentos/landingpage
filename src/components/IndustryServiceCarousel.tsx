@@ -176,24 +176,18 @@ export default function IndustryServiceCarousel() {
 
   // Navegação por setas
   const scrollLeftButton = () => {
-    if (containerRef.current && canScrollLeft) {
-      const { itemWidth, gap } = getItemDimensions()
-      const scrollAmount = itemWidth + gap
-      containerRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' })
-
-      // Verifica após um pequeno delay
-      setTimeout(() => checkScrollability(), 300)
+    const currentIndex = services.findIndex(service => service.id === selected)
+    if (currentIndex > 0) {
+      const previousService = services[currentIndex - 1]
+      handleServiceClick(previousService.id, currentIndex - 1)
     }
   }
 
   const scrollRightButton = () => {
-    if (containerRef.current && canScrollRight) {
-      const { itemWidth, gap } = getItemDimensions()
-      const scrollAmount = itemWidth + gap
-      containerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
-
-      // Verifica após um pequeno delay
-      setTimeout(() => checkScrollability(), 300)
+    const currentIndex = services.findIndex(service => service.id === selected)
+    if (currentIndex < services.length - 1) {
+      const nextService = services[currentIndex + 1]
+      handleServiceClick(nextService.id, currentIndex + 1)
     }
   }
 
@@ -291,40 +285,50 @@ export default function IndustryServiceCarousel() {
       >
         {/* Setas de navegação */}
         <Box sx={{ display: 'flex', gap: 1 }}>
-          <IconButton
-            onClick={scrollLeftButton}
-            disabled={!canScrollLeft}
-            sx={{
-              borderRadius: 0.5,
-              backgroundColor: canScrollLeft ? 'rgba(255, 136, 0, 0.1)' : 'rgba(169, 173, 190, 0.1)',
-              color: canScrollLeft ? '#FF8800' : '#A9ADBE',
-              '&:hover': {
-                backgroundColor: canScrollLeft ? 'rgba(255, 136, 0, 0.2)' : 'rgba(169, 173, 190, 0.1)',
-              },
-              '&.Mui-disabled': {
-                color: '#A9ADBE',
-              },
-            }}
-          >
-            <ChevronLeft />
-          </IconButton>
-          <IconButton
-            onClick={scrollRightButton}
-            disabled={!canScrollRight}
-            sx={{
-              borderRadius: 0.5,
-              backgroundColor: canScrollRight ? 'rgba(255, 136, 0, 0.1)' : 'rgba(169, 173, 190, 0.1)',
-              color: canScrollRight ? '#FF8800' : '#A9ADBE',
-              '&:hover': {
-                backgroundColor: canScrollRight ? 'rgba(255, 136, 0, 0.2)' : 'rgba(169, 173, 190, 0.1)',
-              },
-              '&.Mui-disabled': {
-                color: '#A9ADBE',
-              },
-            }}
-          >
-            <ChevronRight />
-          </IconButton>
+          {(() => {
+            const currentIndex = services.findIndex(service => service.id === selected)
+            const isFirstItem = currentIndex === 0
+            const isLastItem = currentIndex === services.length - 1
+
+            return (
+              <>
+                <IconButton
+                  onClick={scrollLeftButton}
+                  disabled={isFirstItem}
+                  sx={{
+                    borderRadius: 0.5,
+                    backgroundColor: isFirstItem ? 'rgba(169, 173, 190, 0.1)' : 'rgba(255, 136, 0, 0.1)',
+                    color: isFirstItem ? '#A9ADBE' : '#FF8800',
+                    '&:hover': {
+                      backgroundColor: isFirstItem ? 'rgba(169, 173, 190, 0.1)' : 'rgba(255, 136, 0, 0.2)',
+                    },
+                    '&.Mui-disabled': {
+                      color: '#A9ADBE',
+                    },
+                  }}
+                >
+                  <ChevronLeft />
+                </IconButton>
+                <IconButton
+                  onClick={scrollRightButton}
+                  disabled={isLastItem}
+                  sx={{
+                    borderRadius: 0.5,
+                    backgroundColor: isLastItem ? 'rgba(169, 173, 190, 0.1)' : 'rgba(255, 136, 0, 0.1)',
+                    color: isLastItem ? '#A9ADBE' : '#FF8800',
+                    '&:hover': {
+                      backgroundColor: isLastItem ? 'rgba(169, 173, 190, 0.1)' : 'rgba(255, 136, 0, 0.2)',
+                    },
+                    '&.Mui-disabled': {
+                      color: '#A9ADBE',
+                    },
+                  }}
+                >
+                  <ChevronRight />
+                </IconButton>
+              </>
+            )
+          })()}
         </Box>
       </Box>
 
@@ -341,10 +345,13 @@ export default function IndustryServiceCarousel() {
           alignItems: "start",
           justifyContent: "flex-start",
           gap: { xs: 2, md: 3 },
+          minHeight: { xs: 354, md: 510 },
           width: "100%",
           overflowX: "auto",
-          scrollSnapType: "x mandatory",
-          scrollPaddingInline: { xs: 16, md: 32 },
+          // scrollSnapType: "x mandatory",
+          // scrollPaddingInline: { xs: 16, md: 32 },
+          px: { xs: 2, md: 0 },
+          pl: { xs: 0, md: 0 },
           scrollBehavior: "smooth",
           cursor: isDragging ? "grabbing" : "grab",
           userSelect: "none", // Previne seleção de texto durante o drag
@@ -426,8 +433,8 @@ export default function IndustryServiceCarousel() {
                   alignItems: 'start',
                   opacity: isActive ? 1 : 0,
                   transform: isActive ? 'translateY(0)' : 'translateY(-6px)',
-                  transition: 'max-height .3s linear, opacity .3s linear, transform .3s ease',
-                  willChange: 'max-height, opacity, transform',
+                  transition: 'max-height 0.4s ease-in-out, min-height 0.4s ease-in-out, opacity 0.4s ease-in-out, transform 0.4s ease-in-out',
+                  willChange: 'max-height, min-height, opacity, transform',
                   pointerEvents: isActive ? 'auto' : 'none',
                 }}
               >

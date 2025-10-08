@@ -2,7 +2,7 @@
 
 import { Box, TextField, IconButton, Card, CardContent, Typography, Chip } from '@mui/material';
 import { ChevronLeft, ChevronRight, Search } from '@mui/icons-material';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 
 interface BearingTag {
@@ -31,6 +31,89 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
   const [filteredData, setFilteredData] = useState(bearingData)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
 
+  // Função para fazer scroll até o rolamento selecionado
+  const scrollToSelectedBearing = (index: number) => {
+    if (scrollContainerRef.current) {
+      const cardWidth = 200; // minWidth do card
+      const gap = 16; // gap entre cards (4 * 4px = 16px no tema)
+      const containerPadding = 32; // px das laterais (4 * 8px = 32px no tema md)
+      const cardTotalWidth = cardWidth + gap;
+
+      // Calcula a posição do card selecionado
+      const scrollPosition = index * cardTotalWidth - containerPadding;
+
+      // Faz scroll suave até a posição
+      scrollContainerRef.current.scrollTo({
+        left: Math.max(0, scrollPosition),
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  // useEffect para fazer scroll quando selectedIndex mudar
+  useEffect(() => {
+    if (selectedIndex >= 0) {
+      // Pequeno delay para garantir que o DOM foi atualizado
+      setTimeout(() => {
+        scrollToSelectedBearing(selectedIndex);
+      }, 100);
+    }
+  }, [selectedIndex]);
+
+  // Verifica querystring ao montar o componente e observa mudanças
+  useEffect(() => {
+    const checkBearingParam = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const bearingParam = urlParams.get('bearing');
+
+      if (bearingParam) {
+        const bearingIndex = parseInt(bearingParam, 10);
+
+        // Verifica se o índice é válido
+        if (!isNaN(bearingIndex) && bearingIndex >= 0 && bearingIndex < bearingData.length) {
+          // Chama a função de seleção se o índice for diferente do atual
+          if (bearingIndex !== selectedIndex) {
+            onSelectBearing(bearingIndex);
+          }
+
+          // Remove a querystring após processar
+          const url = new URL(window.location.href);
+          url.searchParams.delete('bearing');
+          window.history.replaceState({}, '', url.toString());
+        }
+      }
+    };
+
+    // Verifica na montagem
+    checkBearingParam();
+
+    // Escuta mudanças na URL (botão voltar/avançar do navegador)
+    const handlePopState = () => {
+      checkBearingParam();
+    };
+
+    window.addEventListener('popstate', handlePopState);
+
+    // Observa mudanças na URL usando MutationObserver para capturar mudanças via JavaScript
+    let lastUrl = window.location.href;
+    const urlObserver = new MutationObserver(() => {
+      const currentUrl = window.location.href;
+      if (currentUrl !== lastUrl) {
+        lastUrl = currentUrl;
+        checkBearingParam();
+      }
+    });
+
+    // Observa mudanças no documento (para capturar mudanças de URL via JavaScript)
+    urlObserver.observe(document, { subtree: true, childList: true });
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      urlObserver.disconnect();
+    };
+  }, [bearingData.length, selectedIndex, onSelectBearing]);
+
   // Filtra os dados baseado no termo de busca (apenas após primeira renderização para SEO)
   const handleSearch = (term: string) => {
     setSearchTerm(term)
@@ -58,6 +141,29 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
       scrollContainerRef.current.scrollBy({ left: 300, behavior: 'smooth' })
     }
   }
+
+  // Função para fazer scroll para baixo quando um card é clicado
+  const handleCardClick = (index: number) => {
+    // Chama a função original de seleção
+    onSelectBearing(index);
+
+    // Remove querystring se existir (para limpar estado)
+    const url = new URL(window.location.href);
+    if (url.searchParams.has('bearing')) {
+      url.searchParams.delete('bearing');
+      window.history.replaceState({}, '', url.toString());
+    }
+
+    // Detecta se é mobile ou desktop e faz scroll apropriado
+    const isMobile = window.innerWidth < 768;
+    const scrollDistance = isMobile ? 400 : 500;
+
+    // Faz scroll suave para baixo
+    window.scrollBy({
+      top: scrollDistance,
+      behavior: 'smooth'
+    });
+  };
 
   // Renderiza todos os items inicialmente para SEO, depois aplica filtro visual
   const itemsToShow = searchTerm ? filteredData : bearingData
@@ -185,10 +291,11 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
           return (
             <Card
               key={index}
-              onClick={() => onSelectBearing(index)}
+              onClick={() => handleCardClick(index)}
               sx={{
                 minWidth: 200,
                 maxWidth: 200,
+                minHeight: 300,
                 display: isVisible ? 'flex' : 'none',
                 flexDirection: 'column',
                 bgcolor: isSelected ? 'rgba(255, 136, 0, 0.1)' : 'background.default',
@@ -216,7 +323,7 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
                   fill
                   style={{
                     objectFit: 'contain',
-                    padding: '0px',
+                    padding: '16px',
                   }}
                 />
               </Box>

@@ -419,7 +419,7 @@ export default function IndustryServiceCarousel() {
                   pt: 0,
                   overflow: 'hidden',
                   maxHeight: isActive ? '400px' : 0,
-                  minHeight: isActive ? { xs: '230px', md: '294px' } : 0,
+                  minHeight: isActive ? { xs: '230px', md: '315px' } : 0,
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',

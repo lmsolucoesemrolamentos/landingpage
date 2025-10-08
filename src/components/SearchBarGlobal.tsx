@@ -11,11 +11,13 @@ import {
   Card,
   CardContent,
   Chip,
+  Button,
 } from '@mui/material';
 import { Search as SearchIcon, Close as CloseIcon, ChevronLeft, ChevronRight } from '@mui/icons-material';
 import Image from 'next/image';
 import { useSearch } from '../contexts/SearchContext';
 import { searchBearings, BearingItem } from '../data/bearingData';
+import { ctaButtonStyle } from '@/styles/globalStyles';
 
 export default function SearchBarGlobal() {
   const { isOpen, searchValue, closeSearch, setSearchValue } = useSearch();
@@ -269,10 +271,17 @@ export default function SearchBarGlobal() {
                     <Card
                       key={index}
                       sx={{
-                        minWidth: 280,
-                        maxWidth: 280,
+                        minWidth: 200,
+                        maxWidth: 200,
+                        minHeight: 300,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        bgcolor: 'background.default',
+                        boxShadow: 0,
+                        borderRadius: 2,
                         cursor: 'pointer',
-                        transition: 'all 0.2s ease',
+                        transition: 'transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease',
+                        border: '2px solid transparent',
                         '&:hover': {
                           transform: 'translateY(-4px)',
                           boxShadow: '0 8px 25px rgba(0,0,0,0.1)',
@@ -281,6 +290,12 @@ export default function SearchBarGlobal() {
                       onClick={() => {
                         // Fecha o search e navega para a seção de rolamentos
                         closeSearch();
+
+                        // Adiciona querystring com o índice do rolamento selecionado
+                        const url = new URL(window.location.href);
+                        url.searchParams.set('bearing', index.toString());
+                        window.history.pushState({}, '', url.toString());
+
                         setTimeout(() => {
                           const element = document.querySelector('#rolamentos');
                           if (element) {
@@ -289,47 +304,64 @@ export default function SearchBarGlobal() {
                         }, 200);
                       }}
                     >
-                      <Box sx={{ position: 'relative', height: 160 }}>
+                      {/* Imagem do rolamento */}
+                      <Box
+                        sx={{
+                          position: 'relative',
+                          height: 200,
+                          backgroundColor: '#ffffff',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}
+                      >
                         <Image
                           src={bearing.imgSrc}
                           alt={bearing.title}
                           fill
-                          style={{ objectFit: 'cover' }}
+                          style={{
+                            objectFit: 'contain',
+                            padding: '16px',
+                          }}
                         />
                       </Box>
-                      <CardContent sx={{ p: 2 }}>
-                        <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1, lineHeight: 1.2 }}>
-                          {bearing.title}
-                        </Typography>
+
+                      <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', p: 1, pb: '8px !important' }}>
+                        {/* Tags */}
+                        <Box sx={{ display: 'flex', flexWrap: 'nowrap', gap: 0, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                          <Box>
+                            {bearing.highlight && (
+                              <Chip
+                                label="Mais buscados"
+                                size="small"
+                                sx={{
+                                  backgroundColor: 'primary.main',
+                                  color: 'white',
+                                  fontSize: { xs: '12px', md: '20px' },
+                                  borderRadius: 0.5,
+                                  '& .MuiChip-icon': {
+                                    color: 'white',
+                                  },
+                                }}
+                              />
+                            )}
+                          </Box>
+                          <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 0 }}>
+                            {bearing.tags.map((tag, tagIndex) => (
+                              <i className={tag.icon} key={tagIndex} style={{ fontSize: '20px', color: '#A9ADBE' }}></i>
+                            ))}
+                          </Box>
+                        </Box>
+
+                        {/* Título */}
                         <Typography
                           variant="body2"
-                          color="text.secondary"
                           sx={{
-                            fontSize: '0.75rem',
-                            display: '-webkit-box',
-                            WebkitLineClamp: 2,
-                            WebkitBoxOrient: 'vertical',
-                            overflow: 'hidden',
-                            mb: 1,
+                            color: '#181A22',
                           }}
                         >
-                          {bearing.description}
+                          {bearing.title.charAt(0).toUpperCase() + bearing.title.slice(1).toLowerCase()}
                         </Typography>
-                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                          {bearing.tags.slice(0, 2).map((tag, tagIndex) => (
-                            <Chip
-                              key={tagIndex}
-                              label={tag.title}
-                              size="small"
-                              sx={{
-                                fontSize: '0.6rem',
-                                height: 20,
-                                backgroundColor: 'primary.main',
-                                color: 'white',
-                              }}
-                            />
-                          ))}
-                        </Box>
                       </CardContent>
                     </Card>
                   ))}
@@ -361,7 +393,34 @@ export default function SearchBarGlobal() {
                   </Box>
                 ))}
               </Box>
-            ) : null}
+            ) : (
+              /* Quando não há resultados de pesquisa */
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  textAlign: 'center',
+                  py: 4,
+                  gap: 2,
+                  maxWidth: 500,
+                  mx: 'auto',
+                }}
+              >
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: 'text.primary',
+                    fontWeight: 600,
+                    mb: 1,
+                  }}
+                >
+                  Não encontrou o que precisa?
+                </Typography>
+
+                <Button fullWidth sx={{ ...ctaButtonStyle }} >Falar Com Especialista</Button>
+              </Box>
+            )}
           </Box>
         </Box>
       </Box>

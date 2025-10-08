@@ -132,14 +132,16 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
 
   // Navegação por setas
   const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: -300, behavior: 'smooth' })
+    // Seleciona o item anterior
+    if (selectedIndex > 0) {
+      handleCardClick(selectedIndex - 1);
     }
   }
 
   const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: 300, behavior: 'smooth' })
+    // Seleciona o próximo item
+    if (selectedIndex < bearingData.length - 1) {
+      handleCardClick(selectedIndex + 1);
     }
   }
 
@@ -228,12 +230,17 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
         <Box sx={{ display: 'flex', gap: 1 }}>
           <IconButton
             onClick={scrollLeft}
+            disabled={selectedIndex === 0}
             sx={{
               borderRadius: 0.5,
-              backgroundColor: 'rgba(255, 136, 0, 0.1)',
-              color: '#FF8800',
+              backgroundColor: selectedIndex === 0 ? 'rgba(169, 173, 190, 0.1)' : 'rgba(255, 136, 0, 0.1)',
+              color: selectedIndex === 0 ? '#A9ADBE' : '#FF8800',
               '&:hover': {
-                backgroundColor: 'rgba(255, 136, 0, 0.2)',
+                backgroundColor: selectedIndex === 0 ? 'rgba(169, 173, 190, 0.1)' : 'rgba(255, 136, 0, 0.2)',
+              },
+              '&.Mui-disabled': {
+                backgroundColor: 'rgba(169, 173, 190, 0.1)',
+                color: '#A9ADBE',
               },
             }}
           >
@@ -241,12 +248,17 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
           </IconButton>
           <IconButton
             onClick={scrollRight}
+            disabled={selectedIndex === bearingData.length - 1}
             sx={{
               borderRadius: 0.5,
-              backgroundColor: 'rgba(255, 136, 0, 0.1)',
-              color: '#FF8800',
+              backgroundColor: selectedIndex === bearingData.length - 1 ? 'rgba(169, 173, 190, 0.1)' : 'rgba(255, 136, 0, 0.1)',
+              color: selectedIndex === bearingData.length - 1 ? '#A9ADBE' : '#FF8800',
               '&:hover': {
-                backgroundColor: 'rgba(255, 136, 0, 0.2)',
+                backgroundColor: selectedIndex === bearingData.length - 1 ? 'rgba(169, 173, 190, 0.1)' : 'rgba(255, 136, 0, 0.2)',
+              },
+              '&.Mui-disabled': {
+                backgroundColor: 'rgba(169, 173, 190, 0.1)',
+                color: '#A9ADBE',
               },
             }}
           >

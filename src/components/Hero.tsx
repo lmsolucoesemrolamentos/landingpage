@@ -179,7 +179,7 @@ const Hero = () => {
             </Box>
           </Grid>
 
-          <Grid size={{ xs: 12, sm: 12, md: 6 }} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'end', justifyContent: 'space-between', width: '100%' }}>
+          <Grid size={{ xs: 12, sm: 12, md: 6 }} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'end', justifyContent: 'space-between', width: '100%', mb: 4 }}>
             {/* Conteúdo do segundo grid item */}
             <Box className='bg-glass' sx={{ width: { xs: '100%', sm: '100%' }, minWidth: { xs: '100%', sm: '100%' }, display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center', p: 2, borderRadius: 2, gap: 2 }}>
 

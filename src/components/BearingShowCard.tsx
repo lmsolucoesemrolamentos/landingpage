@@ -250,12 +250,12 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
 
                 {/* Título */}
                 <Typography
-                  variant="body1"
+                  variant="body2"
                   sx={{
                     color: '#181A22',
                   }}
                 >
-                  {item.title}
+                  {item.title.charAt(0).toUpperCase() + item.title.slice(1).toLowerCase()}
                 </Typography>
 
               </CardContent>

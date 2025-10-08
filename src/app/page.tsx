@@ -34,25 +34,43 @@ export default function Home() {
             {/* imagem do rolamento inicial */}
             <Box sx={{
               position: "absolute",
-              top: '30%',
+              top: { xs: '60vh', md: '30%' },
               width: '100%',
               display: 'flex',
               justifyContent: 'center',
               zIndex: 0,
             }}>
-              <Image
-                src="/images/LM/center.webp"
-                alt="Rolamento industrial de alta performance para indústria petrolífera e agronegócio - LM Soluções em Rolamentos"
-                width={2000}
-                height={2000}
-                priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  maxWidth: '2000px',
-                }}
-              />
+              <Box sx={{ display: { xs: 'none', md: 'block' }, maxWidth: '100%', overflow: 'hidden' }}>
+                <Image
+                  src='/images/center.webp'
+                  alt="Rolamento industrial de alta performance para indústria petrolífera e agronegócio - LM Soluções em Rolamentos"
+                  width={2000}
+                  height={2000}
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    maxWidth: '2000px',
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: { xs: 'block', md: 'none' }, maxWidth: '100%', overflow: 'hidden' }}>
+                <Image
+                  src='/images/mobile.webp'
+                  alt="Rolamento industrial de alta performance para indústria petrolífera e agronegócio - LM Soluções em Rolamentos"
+                  width={2000}
+                  height={2000}
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+                  style={{
+                    width: '160%',
+                    transform: 'translateX(-20%)',
+                    height: 'auto',
+                    maxWidth: '2000px',
+                  }}
+                />
+              </Box>
             </Box>
           </Box>
           {/* camada do conteudo que deve ficar em cima da outra camada */}

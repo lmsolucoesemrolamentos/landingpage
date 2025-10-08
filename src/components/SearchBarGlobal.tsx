@@ -221,7 +221,7 @@ export default function SearchBarGlobal() {
             {searchValue && searchResults.length > 0 ? (
               <Box sx={{ position: 'relative' }}>
                 {/* Botões de navegação */}
-                <IconButton
+                {/* <IconButton
                   onClick={scrollLeft}
                   sx={{
                     position: 'absolute',
@@ -235,9 +235,30 @@ export default function SearchBarGlobal() {
                   }}
                 >
                   <ChevronLeft />
-                </IconButton>
+                </IconButton> */}
 
                 <IconButton
+                  onClick={scrollLeft}
+                  sx={{
+
+                    position: 'absolute',
+                    left: -8,
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    zIndex: 2,
+
+                    borderRadius: 0.5,
+                    backgroundColor: '#fff3e5',
+                    color: '#FF8800',
+                    '&:hover': {
+                      backgroundColor: '#ffe7cc',
+                    },
+                  }}
+                >
+                  <ChevronLeft />
+                </IconButton>
+
+                {/* <IconButton
                   onClick={scrollRight}
                   sx={{
                     position: 'absolute',
@@ -248,6 +269,27 @@ export default function SearchBarGlobal() {
                     backgroundColor: 'white',
                     boxShadow: '0 0px 20px rgba(30, 31, 41, 0.06)',
                     '&:hover': { backgroundColor: 'grey.50' },
+                  }}
+                >
+                  <ChevronRight />
+                </IconButton> */}
+
+                <IconButton
+                  onClick={scrollRight}
+                  sx={{
+
+                    position: 'absolute',
+                    right: -8,
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    zIndex: 2,
+
+                    borderRadius: 0.5,
+                    backgroundColor: '#fff3e5',
+                    color: '#FF8800',
+                    '&:hover': {
+                      backgroundColor: '#ffe7cc',
+                    },
                   }}
                 >
                   <ChevronRight />

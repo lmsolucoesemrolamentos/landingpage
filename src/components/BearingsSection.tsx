@@ -12,7 +12,8 @@ export default function BearingsSection() {
       id="rolamentos"
       sx={{
         position: 'relative',
-        width: '100%'
+        width: '100%',
+        pt: { xs: 2, md: 4 },
       }}
     >
 

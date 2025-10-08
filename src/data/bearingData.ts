@@ -96,6 +96,16 @@ export const bearingData: BearingItem[] = [
       { icon: "ri-equalizer-2-line", title: 'Versátil' },
     ],
   },
+  {
+    id: 'rolamento-de-rolos-agulha',
+    imgSrc: '/images/LM/rolamentos/rolos-agulha.webp',
+    title: 'ROLAMENTO DE ROLOS AGULHA',
+    description: 'É um tipo de rolamento composto por roletes cilíndricos muito finos e longos (como agulhas), com diâmetro pequeno em relação ao comprimento. Essa configuração permite alta capacidade de carga radial em um espaço reduzido, sendo ideal para aplicações onde o espaço é limitado.',
+    tags: [
+      { icon: "ri-flashlight-line", title: 'Baixa fricção' },
+      { icon: "ri-weight-line", title: 'Altas cargas' },
+    ],
+  },
 ];
 
 // Função para buscar rolamentos

@@ -31,6 +31,21 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
   const [searchTerm, setSearchTerm] = useState('')
   const [filteredData, setFilteredData] = useState(bearingData)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(true)
+
+  // Função para verificar se pode fazer scroll
+  const checkScrollability = () => {
+    if (!scrollContainerRef.current) return
+
+    const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current
+
+    // Pode fazer scroll para esquerda se não estiver no início
+    setCanScrollLeft(scrollLeft > 5) // 5px de tolerância
+
+    // Pode fazer scroll para direita se não estiver no final
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 5) // 5px de tolerância
+  }
 
   // Função para fazer scroll até o rolamento selecionado
   const scrollToSelectedBearing = (index: number) => {
@@ -60,6 +75,26 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
       }, 100);
     }
   }, [selectedIndex]);
+
+  // useEffect para verificar scrollabilidade inicial e adicionar listener
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    // Verifica scrollabilidade inicial
+    setTimeout(() => checkScrollability(), 100);
+
+    // Adiciona listener para mudanças de scroll
+    const handleScroll = () => {
+      checkScrollability();
+    };
+
+    container.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      container.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   // Verifica querystring ao montar o componente e observa mudanças
   useEffect(() => {
@@ -132,16 +167,28 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
 
   // Navegação por setas
   const scrollLeft = () => {
-    // Seleciona o item anterior
-    if (selectedIndex > 0) {
-      handleCardClick(selectedIndex - 1);
+    if (scrollContainerRef.current) {
+      const cardWidth = 200; // minWidth do card
+      const gap = 16; // gap entre cards (xs: 2 = 16px)
+      const scrollAmount = cardWidth + gap;
+
+      scrollContainerRef.current.scrollBy({
+        left: -scrollAmount,
+        behavior: 'smooth'
+      });
     }
   }
 
   const scrollRight = () => {
-    // Seleciona o próximo item
-    if (selectedIndex < bearingData.length - 1) {
-      handleCardClick(selectedIndex + 1);
+    if (scrollContainerRef.current) {
+      const cardWidth = 200; // minWidth do card
+      const gap = 16; // gap entre cards (xs: 2 = 16px)
+      const scrollAmount = cardWidth + gap;
+
+      scrollContainerRef.current.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
     }
   }
 
@@ -230,13 +277,13 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
         <Box sx={{ display: 'flex', gap: 1 }}>
           <IconButton
             onClick={scrollLeft}
-            disabled={selectedIndex === 0}
+            disabled={!canScrollLeft}
             sx={{
               borderRadius: 0.5,
-              backgroundColor: selectedIndex === 0 ? 'rgba(169, 173, 190, 0.1)' : 'rgba(255, 136, 0, 0.1)',
-              color: selectedIndex === 0 ? '#A9ADBE' : '#FF8800',
+              backgroundColor: !canScrollLeft ? 'rgba(169, 173, 190, 0.1)' : 'rgba(255, 136, 0, 0.1)',
+              color: !canScrollLeft ? '#A9ADBE' : '#FF8800',
               '&:hover': {
-                backgroundColor: selectedIndex === 0 ? 'rgba(169, 173, 190, 0.1)' : 'rgba(255, 136, 0, 0.2)',
+                backgroundColor: !canScrollLeft ? 'rgba(169, 173, 190, 0.1)' : 'rgba(255, 136, 0, 0.2)',
               },
               '&.Mui-disabled': {
                 backgroundColor: 'rgba(169, 173, 190, 0.1)',
@@ -248,13 +295,13 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
           </IconButton>
           <IconButton
             onClick={scrollRight}
-            disabled={selectedIndex === bearingData.length - 1}
+            disabled={!canScrollRight}
             sx={{
               borderRadius: 0.5,
-              backgroundColor: selectedIndex === bearingData.length - 1 ? 'rgba(169, 173, 190, 0.1)' : 'rgba(255, 136, 0, 0.1)',
-              color: selectedIndex === bearingData.length - 1 ? '#A9ADBE' : '#FF8800',
+              backgroundColor: !canScrollRight ? 'rgba(169, 173, 190, 0.1)' : 'rgba(255, 136, 0, 0.1)',
+              color: !canScrollRight ? '#A9ADBE' : '#FF8800',
               '&:hover': {
-                backgroundColor: selectedIndex === bearingData.length - 1 ? 'rgba(169, 173, 190, 0.1)' : 'rgba(255, 136, 0, 0.2)',
+                backgroundColor: !canScrollRight ? 'rgba(169, 173, 190, 0.1)' : 'rgba(255, 136, 0, 0.2)',
               },
               '&.Mui-disabled': {
                 backgroundColor: 'rgba(169, 173, 190, 0.1)',

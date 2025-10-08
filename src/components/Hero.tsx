@@ -2,12 +2,14 @@ import {
   Box,
   Typography,
   Grid,
-  Container
+  Container,
+  Button
 } from '@mui/material';
 import Image from 'next/image';
 // import { link } from 'fs';
 import Link from 'next/link';
 import SearchBar from './SearchBar';
+import { ctaButtonStyle } from '@/styles/globalStyles';
 
 const gradientText = {
   background: 'linear-gradient(92.99deg, #181A22 2.48%, #324592 103.8%)',
@@ -78,7 +80,7 @@ const Hero = () => {
       </Box> */}
 
         <Grid container spacing={{ xs: 2, sm: 10 }} sx={{ width: '100%' }}>
-          <Grid size={{ xs: 3, sm: 7 }}>
+          <Grid size={{ xs: 3, sm: 6 }}>
             <Image
               src="/images/LM_logo2.svg"
               alt="LM Soluções em Rolamentos - Logo"
@@ -89,7 +91,7 @@ const Hero = () => {
             />
           </Grid>
 
-          <Grid size={{ xs: 9, sm: 5 }} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+          <Grid size={{ xs: 9, sm: 6 }} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
             <SearchBar />
           </Grid>
         </Grid>
@@ -128,7 +130,7 @@ const Hero = () => {
           </Typography>
         </Grid> */}
 
-          <Grid size={{ xs: 12, sm: 7 }}>
+          <Grid size={{ xs: 12, sm: 12, md: 6 }}>
             <Box
               sx={{
                 containerType: 'inline-size',
@@ -177,9 +179,9 @@ const Hero = () => {
             </Box>
           </Grid>
 
-          <Grid size={{ xs: 12, sm: 5 }} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+          <Grid size={{ xs: 12, sm: 12, md: 6 }} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'end', justifyContent: 'space-between', width: '100%' }}>
             {/* Conteúdo do segundo grid item */}
-            <Box className='bg-glass' sx={{ width: { xs: '100%', sm: 'auto' }, minWidth: { xs: '100%', sm: 'auto' }, display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center', p: 2, borderRadius: 2, gap: 2 }}>
+            <Box className='bg-glass' sx={{ width: { xs: '100%', sm: '100%' }, minWidth: { xs: '100%', sm: '100%' }, display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center', p: 2, borderRadius: 2, gap: 2 }}>
 
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                 <Typography variant="h6" sx={{ ...gradientText }}>
@@ -201,7 +203,7 @@ const Hero = () => {
                 </Box>
               ))}
             </Box> */}
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 0.5, sm: 1 } }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 0.5, sm: 1 }, width: '100%' }}>
                 {[0, 2, 4].map((start) => (
                   <Box key={start} sx={{ display: 'flex', gap: { xs: 0.5, sm: 1 } }}>
                     {[items[start], items[start + 1]].map((item) => (
@@ -228,6 +230,18 @@ const Hero = () => {
               </Box>
 
             </Box>
+
+            <Grid container spacing={2} sx={{ width: '100%', mt: 2, display: { xs: 'none', sm: 'flex' } }}>
+              <Grid size={10}>
+                <Button fullWidth sx={{ ...ctaButtonStyle }} >Falar Com Especialista</Button>
+              </Grid>
+              <Grid size={2} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <i className='ri-whatsapp-line' style={{ fontSize: 40, color: '#FF8800' }}></i>
+              </Grid>
+
+
+            </Grid>
+
           </Grid>
         </Grid>
 

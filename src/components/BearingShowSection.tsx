@@ -21,8 +21,8 @@ interface BearingItem {
 
 const bearingData: BearingItem[] = [
   {
-    imgSrc: '/images/rolamento_padrao.png',
-    title: 'Rolamento axial de rolos',
+    imgSrc: '/images/LM/rolamentos/axial-rolos.webp',
+    title: 'ROLAMENTO AXIAL DE ROLOS',
     description: 'Elemento de máquina destinado a suportar cargas axiais elevadas em uma única direção. Utiliza corpos rolantes em forma de cilindros (roletes) dispostos entre pistas planas ou ligeiramente côncavas, garantindo contato linear e maior capacidade de carga em comparação aos rolamentos axiais de esferas.',
     highlight: true,
     tags: [
@@ -31,49 +31,67 @@ const bearingData: BearingItem[] = [
     ],
   },
   {
-    imgSrc: '/images/rolamento_padrao.png',
-    title: 'Rolamento de Esferas',
-    description: 'Rolamento de esferas de uma carreira com alta capacidade de rotação e baixo atrito. Ideal para aplicações que exigem velocidades elevadas e baixo torque de partida. Oferece excelente resistência ao desgaste e longa vida útil em condições operacionais adequadas.',
+    imgSrc: '/images/LM/rolamentos/autocompensador-rolos.webp',
+    title: 'ROLAMENTO AUTOCOMPENSADOR DE ROLOS',
+    description: 'Rolamento projetado para suportar cargas elevadas e se ajustar automaticamente a desalinhamentos entre o eixo e o mancal. Ele é composto por dois anéis, gaiola e rolos em formato de barril, distribuídos simetricamente, o que permite que suporte tanto cargas radiais pesadas quanto cargas axiais moderadas em ambas as direções.',
     tags: [
-      { icon: "ri-speed-line", title: 'Alta rotação' },
-      { icon: "ri-flashlight-line", title: 'Baixo atrito' },
+      { icon: "ri-weight-line", title: 'Altas cargas' },
+      { icon: "ri-compasses-line", title: 'Autocompensação ' },
     ],
   },
   {
-    imgSrc: '/images/rolamento_padrao.png',
-    title: 'Rolamento de Rolos',
-    description: 'Rolamento de rolos cilíndricos projetado para suportar cargas radiais elevadas. Possui maior área de contato entre os elementos rolantes e as pistas, proporcionando superior capacidade de carga e rigidez comparado aos rolamentos de esferas.',
+    imgSrc: '/images/LM/rolamentos/autocompensador-esferas.webp',
+    title: 'ROLAMENTO AUTOCOMPENSADOR DE ESFERAS',
+    description: 'Esse tipo de rolamento possui duas fileiras de esferas guiadas por uma pista esférica no anel externo. Essa geometria permite que ele compense automaticamente desalinhamentos angulares, tornando-o muito eficiente em situações onde o eixo pode estar ligeiramente torto ou desalinhado em relação ao mancal.',
     tags: [
-      { icon: "ri-hourglass-line", title: 'Alta durabilidade' },
-      { icon: "ri-target-line", title: 'Alta precisão' },
+      { icon: "ri-flashlight-line", title: 'Baixa fricção' },
+      { icon: "ri-weight-line", title: 'Carga radial e axial' },
     ],
   },
   {
-    imgSrc: '/images/rolamento_padrao.png',
-    title: 'Rolamento Angular de Contato',
-    description: 'Rolamento especialmente desenvolvido para suportar cargas combinadas (radiais e axiais). Possui ângulo de contato otimizado que permite absorção de forças em múltiplas direções, sendo essencial em aplicações como caixas de direção e bombas hidráulicas.',
+    imgSrc: '/images/LM/rolamentos/axial-esferas.webp',
+    title: 'ROLAMENTO AXIAL DE ESFERAS',
+    description: 'Rolamento projetado especificamente para suportar cargas axiais (na direção do eixo), sem ser adequado para cargas radiais significativas.',
     tags: [
-      { icon: "ri-arrow-up-down-line", title: 'Cargas combinadas' },
-      { icon: "ri-settings-line", title: 'Versatilidade' },
+      { icon: "ri-speed-up-line ", title: 'Velocidade' },
+      { icon: "ri-flashlight-line", title: 'Baixa fricção' },
     ],
   },
   {
-    imgSrc: '/images/rolamento_padrao.png',
-    title: 'Rolamento Autocompensador',
-    description: 'Rolamento de duas carreiras de esferas com pista externa esférica que permite alinhamento automático do eixo. Compensa pequenos desalinhamentos e deflexões do eixo, reduzindo tensões internas e aumentando a vida útil do conjunto.',
+    imgSrc: '/images/LM/rolamentos/rotulas.webp',
+    title: 'RÓTULAS',
+    description: 'As rótulas são tipos especiais de rolamentos que permitem movimento angular entre duas partes, funcionando como uma junta esférica. Elas são usadas em situações em que há necessidade de transmitir força e ao mesmo tempo permitir deslocamentos angulares, acomodando desalinhamentos e vibrações.',
     tags: [
-      { icon: "ri-refresh-line", title: 'Autoalinhamento' },
-      { icon: "ri-tools-line", title: 'Baixa manutenção' },
+      { icon: "ri-equalizer-2-line", title: 'Versátil' },
+      { icon: "ri-time-line", title: 'Durabilidade' },
     ],
   },
   {
-    imgSrc: '/images/rolamento_padrao.png',
-    title: 'Rolamento de Agulhas',
-    description: 'Rolamento compacto com elementos rolantes de pequeno diâmetro (agulhas) e grande comprimento. Oferece alta capacidade de carga radial em espaço reduzido, sendo ideal para aplicações onde o espaço radial é limitado.',
+    imgSrc: '/images/LM/rolamentos/giro_engrenado_externo.webp',
+    title: 'ROLAMENTO DE GIRO ENGRENADO EXTERNO',
+    description: 'Rolamento de grande diâmetro (rolamento de giro ou slewing bearing) que possui dentes de engrenagem na face externa do anel.Isso permite que o giro seja feito por meio do acoplamento direto de um pinhão ao anel externo, transmitindo torque de forma eficiente sem precisar de engrenagens adicionais.',
     tags: [
-      { icon: "ri-compactdisc-line", title: 'Compacto' },
-      { icon: "ri-space-ship-line", title: 'Espaço reduzido' },
+      { icon: "ri-weight-line", title: 'Alta resistência' },
+      { icon: "ri-time-line", title: 'Durabilidade' },
     ],
+  },
+  {
+    imgSrc: '/images/LM/rolamentos/giro_engrenado_interno.webp',
+    title: 'ROLAMENTO DE GIRO ENGRENADO INTERNO',
+    description: 'É um tipo de rolamento de giro de grande porte, projetado para suportar cargas combinadas (axiais, radiais e momentos de tombamento).ele possui dentes de engrenagem usinados na pista interna, permitindo que um pinhão se acople por dentro, transmitindo o torque.'
+    , tags: [
+      { icon: "ri-focus-3-line", title: 'Precisão' },
+      { icon: "ri-time-line", title: 'Durabilidade' },
+    ],
+  },
+  {
+    imgSrc: '/images/LM/rolamentos/conico.webp',
+    title: 'ROLAMENTO CÔNICO',
+    description: 'formado por roletes em formato de cone que trabalham entre pistas também cônicas.  Essa geometria faz com que ele suporte cargas combinadas (radiais e axiais) de forma eficiente.',
+    tags: [
+      { icon: "ri-weight-line", title: 'Altas cargas' },
+  { icon: "ri-equalizer-2-line", title: 'Versátil' },
+],
   },
 ];
 

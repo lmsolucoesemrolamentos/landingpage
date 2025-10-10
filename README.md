@@ -18,6 +18,30 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+## Deploy to GitHub Pages
+
+### Automatic Deploy (Recommended)
+1. Push your code to the `main` branch
+2. GitHub Actions will automatically build and deploy your site
+3. Your site will be available at `https://[username].github.io/[repository-name]`
+
+### Manual Deploy
+To manually generate a static build for GitHub Pages:
+
+```bash
+# Generate static build
+npm run build:static
+
+# The static files will be in the 'out' directory
+# Upload the contents of 'out' to your GitHub Pages branch
+```
+
+### GitHub Pages Setup
+1. Go to your repository Settings
+2. Navigate to "Pages" section
+3. Set Source to "GitHub Actions"
+4. Your site will be automatically deployed on every push to main
+
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Learn More

@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "export": "next build && next export",
+    "build:static": "next build",
+    "start": "next start -p 30500",
     "lint": "eslint"
   },
   "dependencies": {

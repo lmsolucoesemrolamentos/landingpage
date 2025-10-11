@@ -1,10 +1,19 @@
 import type { NextConfig } from "next";
 
+// Check if we're in production and get repository name from environment
+const isProd = process.env.NODE_ENV === 'production'
+const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1] || ''
+
 const nextConfig: NextConfig = {
   // Static export configuration for GitHub Pages
   output: 'export',
   trailingSlash: true,
   skipTrailingSlashRedirect: true,
+  distDir: 'out',
+  
+  // Only set basePath in production for GitHub Pages
+  basePath: isProd && repoName ? `/${repoName}` : '',
+  assetPrefix: isProd && repoName ? `/${repoName}/` : '',
   
   // Performance optimizations
   compress: true,
@@ -13,12 +22,6 @@ const nextConfig: NextConfig = {
   // Image optimization (disabled for static export)
   images: {
     unoptimized: true,
-    formats: ['image/webp', 'image/avif'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 31536000, // 1 year
-    dangerouslyAllowSVG: true,
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
   // SEO and Performance

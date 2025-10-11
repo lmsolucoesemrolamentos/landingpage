@@ -7,4 +7,5 @@ export const teachers = Teachers({
   display: 'swap',
   variable: '--font-teachers',
   fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+  preload: true,
 });

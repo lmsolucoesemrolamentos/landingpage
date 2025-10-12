@@ -4,6 +4,7 @@ import {
   Typography,
 } from '@mui/material';
 import { ctaButtonStyle } from '@/styles/globalStyles';
+import { getAssetPath } from '@/utils/paths';
 
 export default function CustomProjectSection() {
   return (
@@ -37,7 +38,7 @@ export default function CustomProjectSection() {
         <Box sx={{ width: '100%', height: '100%', position: 'relative' }}>
           {/* Ajuste o src depois */}
           <img
-            src="/images/LM/rolamentos_skecth.webp"
+            src={getAssetPath("/images/LM/rolamentos_skecth.webp")}
             alt="Background"
             style={{
               objectFit: 'cover',

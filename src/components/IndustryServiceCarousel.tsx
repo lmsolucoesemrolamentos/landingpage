@@ -5,6 +5,7 @@ import { Box, Button, Typography, IconButton } from "@mui/material"
 import { ChevronLeft, ChevronRight } from "@mui/icons-material"
 import Link from "next/link"
 import { ctaButtonStyle } from "@/styles/globalStyles"
+import { getAssetPath } from "@/utils/paths"
 
 // Número do WhatsApp para contato
 const WHATSAPP_NUMBER = "5511949820295"
@@ -14,56 +15,56 @@ const services = [
     id: "petrolifera",
     title: "PETROLÍFERA",
     description: "Projetados para atender às demandas da indústria petrolífera, nossos rolamentos garantem segurança, durabilidade e performance inigualável, suportando condições máximas de pressão, carga e temperatura.",
-    image: "/images/LM/industrias/petrolifera.webp",
+    image: getAssetPath("/images/LM/industrias/petrolifera.webp"),
     whatsMessage: 'Olá, gostaria de falar com um especialista sobre soluções em rolamentos para a indústria petrolífera.'
   },
   {
     id: "agricola",
     title: "AGRÍCOLA",
     description: "Desenvolvidos para suportar os desafios do agronegócio, os rolamentos asseguram movimento contínuo, maior vida útil e eficiência em cada safra.",
-    image: "/images/LM/industrias/agricola.webp",
+    image: getAssetPath("/images/LM/industrias/agricola.webp"),
     whatsMessage: 'Olá, gostaria de falar com um especialista sobre soluções em rolamentos para a indústria do agronegócio.'
   },
   {
     id: "quimica",
     title: "QUÍMICA",
     description: "Em indústrias químicas onde existem equipamentos como reatores, misturadores e outras máquinas rotativas, é fundamental a aplicação de rolamentos que atuem em ambientes extremamente agressivos.",
-    image: "/images/LM/industrias/quimica.webp",
+    image: getAssetPath("/images/LM/industrias/quimica.webp"),
     whatsMessage: 'Olá, gostaria de falar com um especialista sobre soluções em rolamentos para a indústria química.'
   },
   {
     id: "ferroviaria",
     title: "FERROVIÁRIA",
     description: "Na ferrovia, cada quilômetro percorrido exige confiabilidade absoluta. Os rolamentos desempenham um papel crucial, garantindo o movimento contínuo, seguro e eficiente dos trens de carga e passageiros.",
-    image: "/images/LM/industrias/ferroviaria.webp",
+    image: getAssetPath("/images/LM/industrias/ferroviaria.webp"),
     whatsMessage: 'Olá, gostaria de falar com um especialista sobre soluções em rolamentos para a indústria ferroviária.'
   },
   {
     id: "manutencao",
     title: "MANUTENÇÃO",
     description: "Os rolamentos para manutenção industrial são desenvolvidos para otimizar processos, reduzir custos e manter sua operação em movimento.",
-    image: "/images/LM/industrias/manutencao.webp",
+    image: getAssetPath("/images/LM/industrias/manutencao.webp"),
     whatsMessage: 'Olá, gostaria de falar com um especialista sobre soluções em rolamentos para a indústria de manutenção.'
   },
   {
     id: "sulcroalcooleira",
     title: "SULCOALCOOLEIRA",
     description: "Projetados para vencer os desafios do setor, os rolamentos mantêm o ritmo da produção, garantem segurança, confiabilidade, fortalecem a moagem e movem o futuro da energia renovável!",
-    image: "/images/LM/industrias/sulcroalcooleira.webp",
+    image: getAssetPath("/images/LM/industrias/sulcroalcooleira.webp"),
     whatsMessage: 'Olá, gostaria de falar com um especialista sobre soluções em rolamentos para a indústria sucroalcooleira.'
   },
   {
     id: "alimenticia",
     title: "ALIMENTÍCIA",
     description: "Na indústria de alimentos, higiene, segurança e confiabilidade são indispensáveis. Os rolamentos garantem o movimento contínuo de linhas de produção, sempre atendendo aos padrões mais rigorosos de qualidade.",
-    image: "/images/LM/industrias/alimenticia.webp",
+    image: getAssetPath("/images/LM/industrias/alimenticia.webp"),
     whatsMessage: 'Olá, gostaria de falar com um especialista sobre soluções em rolamentos para a indústria alimentícia.'
   },
   {
     id: "siderurgica",
     title: "SIDERÚRGICA",
     description: "Desenvolvidos para enfrentar os desafios da siderurgia, os rolamentos asseguram força, precisão e longa vida útil, mantendo a produção em movimento.",
-    image: "/images/LM/industrias/siderurgica.webp",
+    image: getAssetPath("/images/LM/industrias/siderurgica.webp"),
     whatsMessage: 'Olá, gostaria de falar com um especialista sobre soluções em rolamentos para a indústria siderúrgica.'
   },
 ]

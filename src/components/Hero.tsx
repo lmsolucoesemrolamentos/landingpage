@@ -10,6 +10,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import SearchBar from './SearchBar';
 import { ctaButtonStyle } from '@/styles/globalStyles';
+import { getAssetPath } from '@/utils/paths';
 
 const gradientText = {
   background: 'linear-gradient(92.99deg, #181A22 2.48%, #324592 103.8%)',
@@ -70,7 +71,7 @@ const Hero = () => {
         gap: 2,
       }}>
               <Image
-              src="/images/LM_logo2.svg"
+              src={getAssetPath("/images/LM_logo2.svg")}
               alt="LM Soluções em Rolamentos - Logo"
               width={40}
               height={40}
@@ -83,7 +84,7 @@ const Hero = () => {
           <Grid size={{ xs: 3, sm: 6 }}>
             <Box sx={{ display: { xs: 'flex', sm: 'none' }, alignItems: 'center', justifyContent: 'flex-start' }}>
               <Image
-                src="/images/LM_logo2.svg"
+                src={getAssetPath("/images/LM_logo2.svg")}
                 alt="LM Soluções em Rolamentos - Logo"
                 width={40}
                 height={40}
@@ -93,7 +94,7 @@ const Hero = () => {
             </Box>
             <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center', justifyContent: 'flex-start' }}>
               <Image
-                src="/images/LM_logo2.svg"
+                src={getAssetPath("/images/LM_logo2.svg")}
                 alt="LM Soluções em Rolamentos - Logo"
                 width={60}
                 height={60}

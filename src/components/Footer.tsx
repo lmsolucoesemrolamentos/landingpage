@@ -3,6 +3,7 @@
 import { Box, Typography, IconButton, Container } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getAssetPath } from '@/utils/paths';
 
 const footerNavItems = [
   { label: 'Sob demanda', href: '#sob-demanda' },
@@ -43,7 +44,7 @@ export default function Footer() {
         }}
       >
         <Image
-          src="/images/LM/rolamentos_skecth.webp"
+          src={getAssetPath("/images/LM/rolamentos_skecth.webp")}
           alt=""
           fill
           style={{
@@ -85,7 +86,7 @@ export default function Footer() {
                 <Link href="/" style={{ textDecoration: 'none' }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                     <Image
-                      src="/images/LM_logo2.svg"
+                      src={getAssetPath("/images/LM_logo2.svg")}
                       alt="LM logo"
                       width={40}
                       height={40}
@@ -202,7 +203,7 @@ export default function Footer() {
                 <Link href="/" style={{ textDecoration: 'none' }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                     <Image
-                      src="/images/LM_logo2.svg"
+                      src={getAssetPath("/images/LM_logo2.svg")}
                       alt="LM logo"
                       width={40}
                       height={40}

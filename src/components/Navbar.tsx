@@ -12,6 +12,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ctaButtonStyle } from '@/styles/globalStyles';
 import { useSearch } from '../contexts/SearchContext';
+import { useAssetPath } from '@/hooks/useAssetPath';
 
 const navItems = [
   { label: 'Sob demanda', href: '#sob-demanda' },
@@ -23,6 +24,7 @@ const navItems = [
 
 export default function Navbar() {
   const { openSearch } = useSearch();
+  const { getAssetPath } = useAssetPath();
 
   // Função para fechar o menu mobile
   const closeMobileMenu = () => {
@@ -78,7 +80,7 @@ export default function Navbar() {
                   <Link href="/" style={{ textDecoration: 'none' }}>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                       <Image
-                        src="/images/LM_logo2.svg"
+                        src={getAssetPath("/images/LM_logo2.svg")}
                         alt="LM logo"
                         width={40}
                         height={40}
@@ -211,7 +213,7 @@ export default function Navbar() {
             <Link href="/" style={{ textDecoration: 'none' }} onClick={closeMobileMenu}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <Image
-                  src="/images/LM_logo2.svg"
+                  src={getAssetPath("/images/LM_logo2.svg")}
                   alt="LM logo"
                   width={40}
                   height={40}

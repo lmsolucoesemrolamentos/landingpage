@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:github": "next build && node scripts/fix-paths.js",
     "start": "next start -p 30500",
     "lint": "eslint",
     "export": "next export",

@@ -37,9 +37,10 @@ jobs:
       run: npm ci
       
     - name: Build with Next.js
-      run: npm run build
+      run: npm run build:github
       env:
         NODE_ENV: production
+        GITHUB_ACTIONS: true
         
     - name: Check build output
       run: |

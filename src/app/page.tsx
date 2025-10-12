@@ -11,6 +11,7 @@ import MaintenanceSection from "@/components/MaintenanceSection";
 import WhoWeAreSection from "@/components/WhoWeAreSection";
 import WeDoAllSection from "@/components/WeDoAll";
 import Footer from "@/components/Footer";
+import { getAssetPath } from "@/utils/paths";
 
 export default function Home() {
   return (

@@ -4,6 +4,7 @@ import { Box, TextField, IconButton, Card, CardContent, Typography, Chip } from 
 import { ChevronLeft, ChevronRight, Search } from '@mui/icons-material';
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
+import { useAssetPath } from '@/utils/paths';
 
 interface BearingTag {
   icon: string;
@@ -28,6 +29,7 @@ interface BearingShowCardProps {
 
 
 export default function BearingShowCard({ bearingData, selectedIndex, onSelectBearing }: BearingShowCardProps) {
+  const getAssetPath = useAssetPath()
   const [searchTerm, setSearchTerm] = useState('')
   const [filteredData, setFilteredData] = useState(bearingData)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
@@ -389,7 +391,7 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
                 }}
               >
                 <Image
-                  src={item.imgSrc}
+                  src={getAssetPath(item.imgSrc)}
                   alt={item.title}
                   fill
                   style={{

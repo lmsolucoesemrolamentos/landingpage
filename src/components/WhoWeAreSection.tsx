@@ -5,6 +5,7 @@ import {
   Typography,
 } from '@mui/material';
 import Image from 'next/image';
+import { getAssetPath } from '@/utils/paths';
 
 
 export default function WhoWeAreSection() {
@@ -82,7 +83,7 @@ export default function WhoWeAreSection() {
                   }}
                 >
                   <Image
-                    src="/images/engenheiros.png"
+                    src={getAssetPath("/images/engenheiros.png")}
                     alt="Quem Somos"
                     layout="responsive"
                     width={700}

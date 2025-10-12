@@ -42,8 +42,8 @@ const items = [
   { icon: 'ri-settings-3-line', label: 'Rolamentos Padrões', link: '#rolamentos' },
   { icon: 'ri-pencil-ruler-line', label: 'Projetos personalizados', link: '#projetos-personalizados' },
   { icon: 'ri-search-line', label: 'Inspeção e manutenção', link: '#manutencao' },
-  { icon: 'ri-shape-line', label: 'Substituição de componentes', link: 'manutencao' },
-  { icon: 'ri-user-3-line', label: 'Consultoria', link: "https://wa.me/5511949820295?text=Ol%C3%A1%2C%20vim%20pelo%20site%2C%20gostaria%20de%20fazer%20um%20or%C3%A7amento" },
+  { icon: 'ri-shape-line', label: 'Substituição de componentes', link: '#manutencao' },
+  { icon: 'ri-user-3-line', label: 'Consultoria', link: "https://wa.me/5511949820295?text=vim%20pelo%20site%20e%20gostaria%20de%20consultaria%20sobre%20rolamentos" },
   { icon: 'ri-tools-line', label: 'Repotencialização', link: '#manutencao' },
 ];
 

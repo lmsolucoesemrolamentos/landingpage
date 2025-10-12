@@ -118,7 +118,7 @@ export default function Footer() {
               </Typography>
             </Box>
 
-            {/* Links de navegação e redes sociais - Desktop */}
+            {/* Google maps, Links de navegação e redes sociais - Desktop */}
             <Box
               sx={{
                 display: 'flex',
@@ -126,10 +126,13 @@ export default function Footer() {
                 gap: 12,
                 alignItems: 'flex-start',
                 height: '100%',
+                width: '40%',
+                borderRadius: 1.5,
+                overflow: 'hidden',
               }}
             >
               {/* Links de navegação */}
-              <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
+              {/* <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
                 {footerNavItems.map((item) => (
                   <Link
                     key={item.label}
@@ -151,10 +154,10 @@ export default function Footer() {
                     </Typography>
                   </Link>
                 ))}
-              </Box>
+              </Box> */}
 
               {/* Redes sociais */}
-              <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
+              {/* <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
                 {socialLinks.map((social) => (
                   <Link
                     key={social.label}
@@ -186,6 +189,15 @@ export default function Footer() {
                     </Box>
                   </Link>
                 ))}
+              </Box> */}
+
+              {/* Google maps */}
+              <Box sx={{
+                width: '100%',
+                height: '100%',
+                minHeight: 200,
+              }}>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1829.5692617503994!2d-46.40916986470248!3d-23.491519527217793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce639974971c81%3A0xab217e704db4ff2e!2sR.%20Tiet%C3%AA%2C%20105%20-%20Vila%20Seabra%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2008180-410!5e0!3m2!1spt-BR!2sbr!4v1760248241585!5m2!1spt-BR!2sbr" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
               </Box>
             </Box>
           </Box>
@@ -225,7 +237,7 @@ export default function Footer() {
                 </Link>
 
                 {/* Redes sociais - Mobile */}
-                <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
+                {/* <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
                   {socialLinks.slice(0, 3).map((social) => (
                     <Link
                       key={social.label}
@@ -249,7 +261,7 @@ export default function Footer() {
                       </IconButton>
                     </Link>
                   ))}
-                </Box>
+                </Box> */}
               </Box>
 
               {/* Descrição Mobile */}
@@ -264,7 +276,7 @@ export default function Footer() {
               </Typography>
 
               {/* Links de navegação - Mobile */}
-              <Box sx={{ mb: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
+              {/* <Box sx={{ mb: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
                 {footerNavItems.map((item) => (
                   <Link
                     key={item.label}
@@ -283,6 +295,15 @@ export default function Footer() {
                     </Typography>
                   </Link>
                 ))}
+              </Box> */}
+
+              {/* google maps */}
+              <Box sx={{
+                mb: 2,
+                width: '100%',
+                height: '100%',
+              }}>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1829.5692617503994!2d-46.40916986470248!3d-23.491519527217793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce639974971c81%3A0xab217e704db4ff2e!2sR.%20Tiet%C3%AA%2C%20105%20-%20Vila%20Seabra%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2008180-410!5e0!3m2!1spt-BR!2sbr!4v1760248241585!5m2!1spt-BR!2sbr" width="100%" height="200" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
               </Box>
             </Box>
           </Box>

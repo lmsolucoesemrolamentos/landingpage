@@ -83,7 +83,7 @@ export default function WhoWeAreSection() {
                   }}
                 >
                   <Image
-                    src={getAssetPath("/images/engenheiros.png")}
+                    src={getAssetPath("/images/engenheiros.webp")}
                     alt="Quem Somos"
                     layout="responsive"
                     width={700}

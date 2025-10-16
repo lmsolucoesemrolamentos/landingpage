@@ -9,8 +9,8 @@ import { SearchProvider } from '../contexts/SearchContext';
 import SearchBarGlobal from '../components/SearchBarGlobal';
 
 export const metadata: Metadata = {
-  title: "LM Soluções em Rolamentos | Indústria Petrolífera e Agronegócio",
-  description: "Especialistas em rolamentos de alta performance para indústria petrolífera e agronegócio. Soluções sob demanda com segurança, durabilidade e eficiência máxima.",
+  title: "LM Soluções em Rolamentos ",
+  description: "Especialistas em rolamentos de alta performance para sua indústria. Soluções sob demanda com segurança, durabilidade e eficiência máxima.",
   keywords: [
     "rolamentos industriais",
     "rolamentos petrolífera",
@@ -41,8 +41,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "LM Soluções em Rolamentos | Especialistas em Soluções Industriais",
-    description: "Atendemos minusciosamente as necessidades da sua indústria com rolamentos de alta qualidade para petrolífera e agronegócio.",
+    title: "LM Soluções em Rolamentos | Especialistas em Rolamentos Industriais",
+    description: "Atendemos minusciosamente as necessidades da sua indústria com rolamentos de alta qualidade.",
     url: "https://lmsolucoes.com.br",
     siteName: "LM Soluções em Rolamentos",
     locale: "pt_BR",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "LM Soluções em Rolamentos | Especialistas em Soluções Industriais",
+    title: "LM Soluções em Rolamentos | Especialistas em Rolamentos Industriais",
     description: "Soluções sob demanda para indústria petrolífera e agronegócio com rolamentos de alta performance.",
     images: ["https://lmsolucoes.com.br/images/LM_logo1.svg"],
   },
@@ -90,7 +90,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "LM Soluções em Rolamentos",
-              "description": "Especialistas em rolamentos de alta performance para indústria petrolífera e agronegócio",
+              "description": "Especialistas em rolamentos de alta performance para sua indústria.",
               "url": "https://lmsolucoes.com.br",
               "logo": "https://lmsolucoes.com.br/images/LM_logo1.svg",
               "contactPoint": {
@@ -99,10 +99,10 @@ export default function RootLayout({
                 "contactType": "customer service",
                 "availableLanguage": "Portuguese"
               },
-              "sameAs": [
-                "https://www.linkedin.com/company/lm-solucoes",
-                "https://www.instagram.com/lmsolucoes"
-              ],
+              // "sameAs": [
+              //   "https://www.linkedin.com/company/lm-solucoes",
+              //   "https://www.instagram.com/lmsolucoes"
+              // ],
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "BR",
@@ -111,22 +111,70 @@ export default function RootLayout({
               "areaServed": "BR",
               "hasOfferCatalog": {
                 "@type": "OfferCatalog",
-                "name": "Serviços de Rolamentos",
+                "name": "Soluções em Rolamentos por Indústria",
                 "itemListElement": [
                   {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
                       "name": "Rolamentos para Indústria Petrolífera",
-                      "description": "Rolamentos projetados para alta pressão, carga e temperatura"
+                      "description": "Rolamentos que garantem segurança, durabilidade e performance inigualável, suportando condições máximas de pressão, carga e temperatura"
                     }
                   },
                   {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "Rolamentos para Agronegócio",
-                      "description": "Soluções robustas para equipamentos agrícolas"
+                      "name": "Rolamentos para Indústria Agrícola",
+                      "description": "Desenvolvidos para suportar os desafios do agronegócio, assegurando movimento contínuo, maior vida útil e eficiência em cada safra"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Rolamentos para Indústria Química",
+                      "description": "Rolamentos especializados para ambientes agressivos com reatores, misturadores e máquinas rotativas"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Rolamentos para Indústria Ferroviária",
+                      "description": "Soluções que garantem movimento contínuo, seguro e eficiente para trens de carga e passageiros"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Rolamentos para Manutenção Industrial",
+                      "description": "Rolamentos desenvolvidos para otimizar processos, reduzir custos e manter operações em movimento"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Rolamentos para Indústria Sucroalcooleira",
+                      "description": "Rolamentos que mantêm o ritmo da produção, garantem segurança e fortalecem a moagem no setor de energia renovável"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Rolamentos para Indústria Alimentícia",
+                      "description": "Soluções que garantem movimento contínuo de linhas de produção atendendo aos padrões mais rigorosos de qualidade e higiene"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Rolamentos para Indústria Siderúrgica",
+                      "description": "Desenvolvidos para enfrentar os desafios da siderurgia, assegurando força, precisão e longa vida útil"
                     }
                   }
                 ]

@@ -20,7 +20,8 @@ export default function ServicesSection() {
       <Box
         sx={{
           width: '100%',
-          mt: { xs: 2, md: 4 }
+          // mt: { xs: 2, md: 4 }
+          mt: 4
         }}
       >
 
@@ -35,7 +36,7 @@ export default function ServicesSection() {
               icon="ri-chat-1-line"
             />
 
-            <Box>
+            <Box sx={{ mt: 2 }}>
               {/* MOBILE: duas linhas */}
               <Box
                 sx={{

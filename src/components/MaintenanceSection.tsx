@@ -36,7 +36,7 @@ export default function MaintenanceSection() {
               icon="ri-tools-fill"
             />
 
-            <Box>
+            <Box mt={2}>
               {/* MOBILE: duas linhas */}
               <Box
                 sx={{
@@ -150,9 +150,10 @@ export default function MaintenanceSection() {
           <Box sx={{
             width: '100%',
             display: 'flex',
-            justifyContent: 'center',
+            justifyContent: { xs: 'flex-start', md: 'center' },
             alignItems: 'center',
-            p: 8
+            p: { xs: 0, md: 8 },
+            py: { xs: 4, md: 8 },
           }}>
             <Button
               sx={{ ...ctaButtonStyle }}

@@ -146,7 +146,7 @@ export default function BearingShowSection() {
           </Grid>
           <Grid size={{ xs: 12, md: 6 }} sx={{ p: { xs: 2, md: 4 } }}>
             <Box sx={{ height: '100%', display: "flex", flexDirection: "column", justifyContent: 'center', alignItems: 'start', gap: 2 }}>
-              <Box>
+              <Box display={"flex"} flexDirection="column" gap={1}>
                 <Typography variant="h6" className='gradient-text'>
                   {bearingData[selectedBearingIndex].title.toUpperCase()}
                 </Typography>

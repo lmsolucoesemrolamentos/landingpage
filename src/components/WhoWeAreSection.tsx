@@ -38,7 +38,7 @@ export default function WhoWeAreSection() {
                   maxWidth: { xs: '100%', md: '600px' },
                 }}>
                   <Typography variant="h3" className="gradient-text" mb={2}>
-                    POR QUE VOCÊ DEVERIA DEIXAR O SEU PROJETO EM NOSSAS MÃOS?
+                    POR QUE DEIXAR O SEU PROJETO EM NOSSAS MÃOS?
                   </Typography>
 
                   <Typography

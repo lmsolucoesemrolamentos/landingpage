@@ -33,7 +33,7 @@ export default function BearingsSection() {
               icon="ri-settings-5-line"
             />
 
-            <Box>
+            <Box mt={2}>
               {/* MOBILE: duas linhas */}
               <Box
                 sx={{

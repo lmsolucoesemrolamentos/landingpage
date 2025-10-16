@@ -364,7 +364,7 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
               sx={{
                 minWidth: 200,
                 maxWidth: 200,
-                minHeight: 300,
+                minHeight: 320,
                 display: isVisible ? 'flex' : 'none',
                 flexDirection: 'column',
                 bgcolor: isSelected ? 'rgba(255, 136, 0, 0.1)' : 'background.default',
@@ -401,7 +401,7 @@ export default function BearingShowCard({ bearingData, selectedIndex, onSelectBe
                 />
               </Box>
 
-              <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', p: 1, pb: '8px !important' }}>
+              <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', p: 1, pb: '8px !important', gap: 1 }}>
                 {/* Tags */}
                 <Box sx={{ display: 'flex', flexWrap: 'nowrap', gap: 0, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                   {item.highlight && (
